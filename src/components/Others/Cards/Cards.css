@@ -1,0 +1,39 @@
+.main {
+ margin: 4px;
+ border: 2px solid #fff;
+ background-color: #fff;
+ border-radius: 5px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ position: relative;
+}
+
+.main::before {
+ position: absolute;
+ bottom: 0;
+ right: 0;
+ content: attr(data-name);
+ color: #f09;
+}
+
+.large {
+ height: 249px;
+ width: 249px;
+}
+
+.colour {
+ height: 65%;
+ width: 65%;
+ background-image: linear-gradient(45deg, #3023ae 0%, #f09 100%);
+ border-radius: 41% 59% 44% 56% / 30% 30% 70% 70%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.colour img {
+ height: 40%;
+ width: 40%;
+ border-radius: 50%;
+}

@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  src: url(./Ubuntu-R.ttf);
+  font-family: "ubuntu";
+}
+
+body {
+  font-family: "ubuntu";
+  background-color: #E9E9E9;
+  cursor: 'https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png';
+}

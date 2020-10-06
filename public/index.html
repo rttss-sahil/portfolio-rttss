@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Profile Page bt Rtits">
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./logo.png">
+  <link rel="icon" href="./logo.png" type="image/png">
+  <title>Sahil Rathee | Portfolio</title>
+</head>
+
+<body>
+  <nav>
+    <header>
+      <div id="navbar"></div>
+    </header>
+  </nav>
+  <div id="container">
+
+  </div>
+  <noscript>Please enable Javascript to run this app</noscript>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./serviceworker.js')
+          .then(reg => console.log("SUCCESS: ", reg.scope))
+          .catch(err => console.log('FAILURE: ', err)
+          )
+      })
+    }
+  </script>
+</body>
+
+
+</html>
