@@ -11,6 +11,6 @@
 
 body {
   font-family: "ubuntu";
-  background-color: #E9E9E9;
+  background: rgba(255, 255, 255, 0.92);
   cursor: 'https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png';
 }
