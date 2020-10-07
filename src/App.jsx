@@ -6,20 +6,24 @@ import "./refs/index.css";
 
 // FILES IMPORT
 import Loading from "./components/Others/Loading/Loading";
-import NavBar from "./components/Others/NavBar/NavBar";
-import Home from "./components/Home/Home";
+const NavBar = React.lazy(() => import("./components/Others/NavBar/NavBar"));
+const Home = React.lazy(() => import("./components/Home/Home"));
 
 // LAZY LOADING
 
 // APP
 function App() {
+  const randomNumber = 0;
+  // Math.floor(Math.random() * 3);
   return (
     <React.Fragment>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading randomNumber={randomNumber} />}>
         <BrowserRouter>
-          <NavBar />
+          <NavBar randomNumber={randomNumber} />
           <Switch>
-            <Route path="/">{/* <Home /> */}</Route>
+            <Route path="/">
+              <Home />
+            </Route>
           </Switch>
         </BrowserRouter>
       </Suspense>

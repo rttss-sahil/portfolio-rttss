@@ -5,8 +5,7 @@ import Loading2 from "./Loaders/Loading2/Loading2";
 import Loading3 from "./Loaders/Loading3/Loading3";
 import Loading4 from "./Loaders/Loading4/Loading4";
 
-function Loading() {
-  const randomNumber = Math.floor(Math.random() * 4);
+function Loading({ randomNumber }) {
   const colors = ["#7817a7", "brown", "#000", "#ffde6b"];
   return (
     <div className="loading" style={{ backgroundColor: colors[randomNumber] }}>
