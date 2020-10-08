@@ -10,7 +10,9 @@
 }
 
 body {
+  z-index: -5;
   font-family: "ubuntu";
-  background: rgba(255, 255, 255, 0.92);
+  background: rgb(240, 240, 240);
   cursor: 'https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png';
+  overflow-x: hidden;
 }

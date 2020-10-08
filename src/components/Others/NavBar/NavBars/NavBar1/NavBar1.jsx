@@ -19,111 +19,91 @@ function NavBar1(props) {
       MENU_RIGHT_Class === "menu"
         ? setMENU_RIGHT_Class("menu collapse")
         : setMENU_RIGHT_Class("menu");
-    },
-    linkHandler = (e, url) => {
-      e.preventDefault();
-      window.location = `${url}`;
     };
   return (
-    <header>
-      <div className="container">
-        <nav>
-          <div id="navigation">
-            <NavLink to="/" className="logo">
-              Sahil Rathee
+    <div className="container">
+      <nav>
+        <div id="navigation">
+          <NavLink to="/" className="logo">
+            Sahil Rathee
+          </NavLink>
+          <div onClick={handleNAV_TOGGLE_Click} className={NAV_TOGGLE_Class}>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div className={MENU_RIGHT_Class}>
+          <div className="top">
+            <div className="topbar">
+              <NavLink
+                to={{ pathname: "mailto:sahil.git@outlook.com" }}
+                className="mail"
+              >
+                <FiMail />
+                <p>sahil.git@outlook.com</p>
+              </NavLink>
+              <NavLink to={{ pathname: "tel:+919992396866" }} className="phone">
+                <FiPhoneCall />
+                <p>+91-999-239-6866</p>
+              </NavLink>
+              <NavLink
+                target="_blank"
+                to={{ pathname: "https://goo.gl/maps/Q3DzphNrFjUfDjvH9" }}
+                className="address"
+              >
+                <BsFillHouseFill />
+                <p>New Delhi, India</p>
+              </NavLink>
+            </div>
+            <ul>
+              <li>
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                <NavLink to="/resume">Resume</NavLink>
+              </li>
+              <li>
+                <NavLink to="/skills">Skills</NavLink>
+              </li>
+              <li>
+                <NavLink to="/projects">Projects</NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
+            </ul>
+          </div>
+          <div className="social">
+            <NavLink
+              target="_blank"
+              to={{ pathname: "https://github.com/rttss" }}
+              className="github"
+            >
+              <AiFillGithub />
+              <p>Github</p>
             </NavLink>
-            <div onClick={handleNAV_TOGGLE_Click} className={NAV_TOGGLE_Class}>
-              <span></span>
-              <span></span>
-            </div>
+            <NavLink
+              target="_blank"
+              to={{ pathname: "https://www.instagram.com/sahil_rttss/" }}
+              className="insta"
+            >
+              <AiOutlineInstagram />
+              <p>Instagram</p>
+            </NavLink>
+            <NavLink
+              target="_blank"
+              to={{
+                pathname: "https://www.linkedin.com/in/sahil-rathee-b3993116b/",
+              }}
+              className="linkedIn"
+            >
+              <AiFillLinkedin />
+              <p>LinkedIn</p>
+            </NavLink>
           </div>
-          <div className={MENU_RIGHT_Class}>
-            <div className="top">
-              <div className="topbar">
-                <NavLink
-                  to="#"
-                  className="mail"
-                  onClick={(e) =>
-                    linkHandler(e, "mailto:sahil.git@outlook.com")
-                  }
-                >
-                  <FiMail />
-                  <p>sahil.git@outlook.com</p>
-                </NavLink>
-                <NavLink
-                  to="#"
-                  className="phone"
-                  onClick={(e) => linkHandler(e, "tel:+919992396866")}
-                >
-                  <FiPhoneCall />
-                  <p>+91-999-239-6866</p>
-                </NavLink>
-                <NavLink
-                  to="#"
-                  className="address"
-                  onClick={(e) =>
-                    linkHandler(e, "https://goo.gl/maps/Q3DzphNrFjUfDjvH9")
-                  }
-                >
-                  <BsFillHouseFill />
-                  <p>New Delhi, India</p>
-                </NavLink>
-              </div>
-              <ul>
-                <li>
-                  <NavLink to="/about">About</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/resume">Resume</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/skills">Skills</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/projects">Projects</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/contact">Contact</NavLink>
-                </li>
-              </ul>
-            </div>
-            <div className="social">
-              <NavLink
-                to="#"
-                className="github"
-                onClick={(e) => linkHandler(e, "https://github.com/rttss")}
-              >
-                <AiFillGithub />
-                <p>Github</p>
-              </NavLink>
-              <NavLink
-                to="#"
-                className="insta"
-                onClick={(e) =>
-                  linkHandler(e, "https://www.instagram.com/sahil_rttss/")
-                }
-              >
-                <AiOutlineInstagram />
-                <p>Instagram</p>
-              </NavLink>
-              <NavLink
-                to="#"
-                className="linkedIn"
-                onClick={(e) =>
-                  linkHandler(
-                    e,
-                    "https://www.linkedin.com/in/sahil-rathee-b3993116b/"
-                  )
-                }
-              >
-                <AiFillLinkedin />
-                <p>LinkedIn</p>
-              </NavLink>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
+        </div>
+      </nav>
+    </div>
   );
 }
 
