@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 // LAZY LOADING
 const NavBar1 = React.lazy(() => import("./NavBars/NavBar1/NavBar1"));
@@ -8,7 +7,7 @@ const NavBar3 = React.lazy(() => import("./NavBars/NavBar3/NavBar3"));
 const NavBar4 = React.lazy(() => import("./NavBars/NavBar4/NavBar4"));
 
 function NavBar({ randomNumber }) {
-  const navBar = (
+  return (
     <div className="navbar">
       {randomNumber === 0 ? (
         <NavBar1 />
@@ -21,7 +20,6 @@ function NavBar({ randomNumber }) {
       )}
     </div>
   );
-  return ReactDOM.createPortal(navBar, document.getElementById("navbar"));
 }
 
 export default NavBar;

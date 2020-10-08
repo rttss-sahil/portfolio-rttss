@@ -1,12 +1,8 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-// CSS FILES
-import "./refs/index.css";
-
 // FILES IMPORT
 import Loading from "./components/Others/Loading/Loading";
-const NavBar = React.lazy(() => import("./components/Others/NavBar/NavBar"));
 const Home = React.lazy(() => import("./components/Home/Home"));
 
 // LAZY LOADING
@@ -19,10 +15,9 @@ function App() {
     <React.Fragment>
       <Suspense fallback={<Loading randomNumber={randomNumber} />}>
         <BrowserRouter>
-          <NavBar randomNumber={randomNumber} />
           <Switch>
             <Route path="/">
-              <Home />
+              <Home randomNumber={randomNumber} />
             </Route>
           </Switch>
         </BrowserRouter>
