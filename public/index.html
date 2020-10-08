@@ -45,6 +45,17 @@
       });
     }
   })();
+  function is_touch_device() {
+    try {
+      document.createEvent('TouchEvent');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  if (is_touch_device) {
+    document.getElementById('cursor').style.display = "none"
+  }
 </script>
 
 </html>
