@@ -1,12 +1,6 @@
-.home1 {}
-
-
-main {
- /* position: absolute; */
- /* left: 0; */
- /* top: 5rem; */
+.main {
  padding: 0 4rem;
- display: flex;
+ /* display: flex; */
  align-items: center;
  flex-direction: column;
  justify-content: space-between;
@@ -50,11 +44,6 @@ main {
  font-weight: 600;
 }
 
-@media (min-width: 768px) {
- .main_left {
-  padding-left: 5rem;
- }
-}
 
 /* Answer */
 .answer span {

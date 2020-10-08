@@ -1,10 +1,28 @@
-.container a {
-  text-decoration: none;
-  color: rgba(34, 34, 34, 0.8);
+/* Globals */
+
+.navbar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 5rem;
+  width: 100%;
+  background-color: transparent;
+  z-index: 999;
 }
 
-.container nav {
-  height: 3rem;
+@media (min-width: 768px) {
+  .navbar {
+    height: 7rem;
+  }
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #6c757d;
+}
+
+.navbar li {
+  list-style: none;
 }
 
 .menu svg {
@@ -12,20 +30,36 @@
   margin-right: 5px;
 }
 
+/* Header */
 
-#navigation {
+.head {
   display: flex;
+  padding: 2rem 1.5rem 0;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  transition: all 0.3s ease-in;
 }
 
-.container ul a:hover,
-.container ul a :focus {
-  color: black;
+.head.head__white {
+  background-color: white;
 }
 
+@media(min-width:768px) {
+  .head {
+    padding: 3rem 5rem 0;
+  }
+}
 
+.head .logo {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .head .logo {
+    font-size: 2rem;
+  }
+}
 
 .menu ul a {
   display: inline-block;
@@ -39,7 +73,7 @@
   display: block;
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: 0px;
   height: 3px;
   width: 0;
   transition: width 0s ease, background .35s ease;
@@ -50,7 +84,7 @@
   display: block;
   position: absolute;
   right: 0;
-  bottom: -4px;
+  bottom: 0px;
   height: 3px;
   width: 0;
   background: #000;
@@ -74,66 +108,24 @@ ul a.active:after {
   background-color: black;
 }
 
-header {
-  /* position: fixed; */
-  top: 0;
-  left: 0;
-  height: 5rem;
-  width: 100%;
-  padding: 2rem 0;
-  background: white;
-  z-index: 3;
-  will-change: transform;
-  transition: background 0.3s, -webkit-transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1);
-  transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1), background 0.3s;
-  transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1), background 0.3s, -webkit-transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1);
-  transform: translateY(0);
-  -webkit-transform: translateY(0);
-}
-
-header nav .logo {
-  float: left;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
-  margin-right: 1rem;
-  margin-left: 2rem;
-  font-size: 1.25rem;
-  line-height: inherit;
-  font-weight: 600;
-  color: black;
-  font-size: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  header nav .logo {
-    font-size: 2rem;
-    margin-left: 4rem;
-  }
-}
-
-
-header nav ul {
+.navbar ul {
   text-align: center;
   list-style: none;
-  padding-left: 0rem;
 }
 
-header nav ul li {
-  margin-top: 0.25rem;
-  float: none;
-  margin-left: 0;
-  transform: translateY(100%);
-  opacity: 0;
-  font-size: 1.75rem;
-  padding: 0.25rem 0;
+.navbar ul li {
+  margin-top: .1rem;
+  font-size: 1.25rem;
   font-weight: 800;
+  opacity: 0;
   color: black;
+  transform: translateY(100%);
   transition: all 0.75s ease-in-out;
   transition: opacity 0.15s ease-in-out;
 }
 
 @media (min-width: 768px) {
-  header nav ul li {
+  nav ul li {
     font-size: 2rem;
   }
 }
@@ -163,7 +155,7 @@ header nav ul li {
   transition: all 0.3s ease-in-out;
 }
 
-header nav ul li a {
+nav ul li a {
   display: block;
 }
 
@@ -172,7 +164,7 @@ ul a.active {
 }
 
 
-.collapse ul>header {
+.collapse ul> {
   height: 100vh;
 }
 
@@ -191,7 +183,6 @@ ul a.active {
   transition: all 0.3s ease-out;
   transition: opacity 0.15s ease-in;
   z-index: 999;
-  background-color: white;
   overflow-y: hidden;
 }
 
@@ -201,6 +192,7 @@ ul a.active {
   justify-content: space-evenly;
   align-items: center;
 }
+
 
 @media (min-width: 768px) {
   .top {
@@ -216,12 +208,15 @@ ul a.active {
 }
 
 .menu.collapse {
+  background-color: white;
   width: 100vw;
   height: calc(100vh - 3.5rem) !important;
   opacity: 1;
   transform: translate(0);
-  background-color: rgb(240, 240, 240);
-  /* background-color: red; */
+}
+
+.menu.collapse .navbar {
+  background-color: white;
 }
 
 .menu.collapse ul {
@@ -235,13 +230,11 @@ ul a.active {
 .nav-toggle {
   display: block;
   border-radius: 5px;
-  background-color: transparent;
   float: right;
   height: 38px;
   width: 38px;
   cursor: pointer;
   padding: 8px 8px;
-  margin-right: 2rem;
   overflow: hidden;
 }
 
@@ -276,6 +269,12 @@ ul a.active {
   .nav-toggle span {
     height: 4px;
     width: 125%;
+    background-color: white;
+  }
+
+
+  .nav-toggle.open span {
+    background-color: black;
   }
 
   .nav-toggle.open span:first-child {
@@ -285,10 +284,7 @@ ul a.active {
   .nav-toggle.open span:last-child {
     transform: rotate(-45deg) translate(4.4px, -1px);
   }
-
 }
-
-
 
 /*     TOP_BAR     */
 

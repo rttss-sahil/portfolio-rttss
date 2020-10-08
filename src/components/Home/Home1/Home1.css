@@ -1,18 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
+
 * {
  margin: 0;
  padding: 0;
  box-sizing: border-box;
-}
-
-@font-face {
- src: url(./Ubuntu-R.ttf);
- font-family: "ubuntu";
+ font-family: 'Montserrat', sans-serif;
 }
 
 body {
- z-index: -5;
- font-family: "ubuntu";
- background: rgb(240, 240, 240);
- cursor: 'https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png';
+ font-size: 16px;
+ line-height: 1.75;
+ z-index: -999;
+ background: white;
  overflow-x: hidden;
+ max-width: 100vw;
 }
