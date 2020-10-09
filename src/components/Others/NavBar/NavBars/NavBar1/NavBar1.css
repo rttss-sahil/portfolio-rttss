@@ -45,17 +45,15 @@
   background-color: white;
 }
 
-@media(min-width:768px) {
-  .head {
-    padding: 3rem 5rem 0;
-  }
-}
-
 .head .logo {
   font-size: 1.25rem;
 }
 
 @media (min-width: 768px) {
+  .head {
+    padding: 1.5rem 1.5rem 0;
+  }
+
   .head .logo {
     font-size: 2rem;
   }
@@ -124,9 +122,20 @@ ul a.active:after {
   transition: opacity 0.15s ease-in-out;
 }
 
+
 @media (min-width: 768px) {
-  nav ul li {
-    font-size: 2rem;
+  .navbar ul li {
+    font-size: 2.5rem;
+    margin-top: 0rem;
+    height: 3.5rem;
+  }
+
+  .menu ul a:before {
+    bottom: 10px;
+  }
+
+  .menu ul a:after {
+    bottom: 10px;
   }
 }
 
@@ -164,17 +173,12 @@ ul a.active {
 }
 
 
-.collapse ul> {
-  height: 100vh;
-}
-
-
 .menu {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   overflow: hidden;
-  transform: translate(100%);
+  transform: translate(-100%);
   opacity: 0;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -240,7 +244,7 @@ ul a.active {
 
 @media (min-width: 768px) {
   .nav-toggle {
-    margin-right: 4rem;
+    margin-right: 1rem;
   }
 }
 

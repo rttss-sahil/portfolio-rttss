@@ -6,23 +6,32 @@ import "./Main.css";
 const pics = process.env.PUBLIC_URL + "/assets/img/";
 
 function Main({ randomNumber }) {
-  const [span1_Class, setSpan1_Class] = useState("span1"),
-    [span2_Class, setSpan2_Class] = useState("span2"),
+  const [span1_Class, setSpan1_Class] = useState("span1 opened"),
+    [span2_Class, setSpan2_Class] = useState("span2 opened"),
     [span3_Class, setSpan3_Class] = useState("span3"),
     [span4_Class, setSpan4_Class] = useState("span4"),
-    [scrollY, setScrollY] = useState(0),
-    [main_View_Class, setMain_View_Class] = useState("main__view aos-init");
+    [main_View_Class, setMain_View_Class] = useState(
+      "main__view aos-init aos-animate"
+    ),
+    [main_Figure_Class, setMain_Figure_Class] = useState(
+      "main__figure aos-init"
+    ),
+    [scrollY, setScrollY] = useState(0);
   window.addEventListener("scroll", () => {
     window.scrollY >= 0
       ? setSpan1_Class("span1 opened")
       : setSpan1_Class("span1");
+    if (window.scrollY >= 15) {
+      setSpan2_Class("span2 opened");
+      setMain_Figure_Class("main__figure aos-init aos-animate");
+    } else {
+      setSpan2_Class("span2");
+      setMain_Figure_Class("main__figure aos-init");
+    }
     window.scrollY >= 50
-      ? setSpan2_Class("span2 opened")
-      : setSpan2_Class("span2");
-    window.scrollY >= 100
       ? setSpan3_Class("span3 opened")
       : setSpan3_Class("span3");
-    if (window.scrollY >= 150) {
+    if (window.scrollY >= 100) {
       setSpan4_Class("span4 opened");
       setMain_View_Class("main__view aos__init aos-animate");
       setScrollY(window.scrollY);
@@ -46,17 +55,17 @@ function Main({ randomNumber }) {
             <p>Who Am I</p>
           </div>
           <div className="answer">
-            <span className={span1_Class}>Hi, my name's</span>
-            <span className={span2_Class}>SAHIL RATHEE</span>
-            <span className={span3_Class}>I'm UI DESIGNER</span>
-            <span className={span4_Class}>+ WEB DEVELOPER</span>
+            <span className={span1_Class}>Hello, my</span>
+            <span className={span2_Class}>name's Sahil</span>
+            <span className={span3_Class}>I'm UI designer</span>
+            <span className={span4_Class}>cum developer</span>
           </div>
         </div>
         <div className={main_View_Class}>
           <div className="main__preview">
             <img
               className="main__pic"
-              src={`${pics}6.png`}
+              src={`${pics}main-pic-6.png`}
               style={{
                 width: "100%",
               }}
@@ -66,9 +75,9 @@ function Main({ randomNumber }) {
           <div className="main__preview">
             <img
               className="main__pic js-parallax"
-              src={`${pics}1.png`}
+              src={`${pics}main-pic-1.png`}
               style={{
-                transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
+                transform: `translate3d(0px, ${(-scrollY + 50) / 5}px, 0px)`,
                 transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
@@ -77,9 +86,9 @@ function Main({ randomNumber }) {
           <div className="main__preview">
             <img
               className="main__pic js-parallax"
-              src={`${pics}2.png`}
+              src={`${pics}main-pic-2.png`}
               style={{
-                transform: `translate3d(0px, ${(-scrollY + 750) / 10}px, 0px)`,
+                transform: `translate3d(0px, ${(-scrollY + 150) / 8}px, 0px)`,
                 transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
@@ -88,7 +97,7 @@ function Main({ randomNumber }) {
           <div className="main__preview">
             <img
               className="main__pic"
-              src={`${pics}3.png`}
+              src={`${pics}main-pic-3.png`}
               style={{
                 transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
               }}
@@ -98,7 +107,7 @@ function Main({ randomNumber }) {
           <div className="main__preview">
             <img
               className="main__pic"
-              src={`${pics}4.png`}
+              src={`${pics}main-pic-4.png`}
               style={{
                 transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
               }}
@@ -108,7 +117,18 @@ function Main({ randomNumber }) {
           <div className="main__preview">
             <img
               className="main__pic js-parallax"
-              src={`${pics}5.png`}
+              src={`${pics}main-pic-5.png`}
+              style={{
+                transform: `translate3d(0px, ${(-scrollY + 150) / 8}px, 0px)`,
+                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+              }}
+              alt=""
+            />
+          </div>
+          <div className="main__preview">
+            <img
+              className="main__pic js-parallax"
+              src={`${pics}main-pic-7.png`}
               style={{
                 transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
                 transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
@@ -116,10 +136,21 @@ function Main({ randomNumber }) {
               alt=""
             />
           </div>
-          <div className="main__preview">
+        </div>
+        <div className="main__figures">
+          <div className="main__figure aos-init aos-animate">
             <img
-              className="main__pic js-parallax"
-              src={`${pics}7.png`}
+              src={`${pics}figure-1.png`}
+              style={{
+                transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
+                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+              }}
+              alt=""
+            />
+          </div>
+          <div className={main_Figure_Class}>
+            <img
+              src={`${pics}figure-2.png`}
               style={{
                 transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
                 transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",

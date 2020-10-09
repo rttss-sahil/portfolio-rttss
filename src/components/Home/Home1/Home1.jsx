@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Home1.css";
-import Main from "./Main/Main";
+const Main = React.lazy(() => import("./Main/Main"));
+const Skills = React.lazy(() => import("./Skills/Skills"));
 
 function Home1({ randomNumber }) {
   const [position, setPosition] = useState({
@@ -21,6 +22,7 @@ function Home1({ randomNumber }) {
   return (
     <React.Fragment>
       <Main randomNumber={randomNumber} />
+      <Skills />
       <div
         id="cursor"
         style={{

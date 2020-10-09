@@ -1,11 +1,12 @@
 {
-  "short_name": "RTITS APP",
-  "name": "RTITS APP PWA",
+  "short_name": "Sahil Rathee || Rttss",
+  "name": "RTTSS Portfolio APP PWA",
   "icons": [
     {
       "src": "./logo.png",
       "type": "image/png",
-      "sizes": "1024x1024"
+      "sizes": "1024x1024",
+      "purpose": "maskable"
     }
   ],
   "start_url": ".",

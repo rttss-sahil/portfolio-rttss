@@ -39,13 +39,18 @@ function NavBar1(props) {
         <div className="top">
           <div className="topbar">
             <NavLink
+              target="_blank"
               to={{ pathname: "mailto:sahil.git@outlook.com" }}
               className="mail"
             >
               <FiMail />
               <p>sahil.git@outlook.com</p>
             </NavLink>
-            <NavLink to={{ pathname: "tel:+919992396866" }} className="phone">
+            <NavLink
+              target="_blank"
+              to={{ pathname: "tel:+919992396866" }}
+              className="phone"
+            >
               <FiPhoneCall />
               <p>+91-999-239-6866</p>
             </NavLink>
