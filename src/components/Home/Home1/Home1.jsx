@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Home1.css";
+import Projects from "./Projects/Projects";
 const Main = React.lazy(() => import("./Main/Main"));
 const Skills = React.lazy(() => import("./Skills/Skills"));
 
@@ -25,6 +26,7 @@ function Home1({ randomNumber }) {
     <React.Fragment>
       <Main randomNumber={randomNumber} scrollDiv={scrollDiv} />
       <Skills scrollDiv={scrollDiv} />
+      <Projects />
       <div
         id="cursor"
         style={{

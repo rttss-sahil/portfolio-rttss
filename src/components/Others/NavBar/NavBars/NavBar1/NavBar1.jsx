@@ -12,6 +12,7 @@ import "./NavBar1.css";
 function NavBar1() {
   const [NAV_TOGGLE_Class, setNAV_TOGGLE_Class] = useState("nav-toggle"),
     [MENU_Class, setMENU_Class] = useState("menu"),
+    [head_Class, setHead_Class] = useState("head"),
     handleNAV_TOGGLE_Click = () => {
       document.body.classList.toggle("no-scroll");
       NAV_TOGGLE_Class === "nav-toggle"
@@ -20,10 +21,23 @@ function NavBar1() {
       MENU_Class === "menu"
         ? setMENU_Class("menu collapse")
         : setMENU_Class("menu");
+      head_Class === "head"
+        ? setHead_Class("head head__white")
+        : setHead_Class("head");
     };
+  const clickhandler = (top) => {
+    document.body.classList.remove("no-scroll");
+    setNAV_TOGGLE_Class("nav-toggle");
+    setMENU_Class("menu");
+    window.scrollTo({
+      top,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <React.Fragment>
-      <div className="head">
+      <div className={head_Class}>
         <NavLink to="/" className="logo">
           Sahil Rathee
         </NavLink>
@@ -62,16 +76,17 @@ function NavBar1() {
           </div>
           <ul>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <NavLink to="/skills" onClick={() => clickhandler(750)}>
+                Skills
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/projects" onClick={() => clickhandler(1200)}>
+                Projects
+              </NavLink>
             </li>
             <li>
               <NavLink to="/resume">Resume</NavLink>
-            </li>
-            <li>
-              <NavLink to="/skills">Skills</NavLink>
-            </li>
-            <li>
-              <NavLink to="/projects">Projects</NavLink>
             </li>
             <li>
               <NavLink to="/contact">Contact</NavLink>

@@ -15,7 +15,8 @@
  }
 }
 
-.details .answer span {
+.details .answer span,
+.projects .answer span {
  width: 100%;
  height: 2.4rem;
  font-size: 1.5rem;
@@ -24,15 +25,18 @@
  transition: all 0.4s ease;
 }
 
-.details .answer :nth-child(2) {
+.details .answer :nth-child(2),
+.projects .answer :nth-child(2) {
  transition-delay: 0.25s;
 }
 
-.details .answer :nth-child(3) {
+.details .answer :nth-child(3),
+.projects .answer :nth-child(3) {
  transition-delay: 0.5s;
 }
 
-.details .answer.animate span {
+.details .answer.animate span,
+.projects .answer.animate span {
  opacity: 1;
  transform: translate(0);
 }
