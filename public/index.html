@@ -71,6 +71,12 @@
       // }
     // });
   </script>
+  <script>
+    window.addEventListener('touchstart', () => {
+      document.getElementById('cursor').style.display = "none";
+      window.removeEventListener('touchstart')
+    })
+  </script>
 </body>
 
 </html>

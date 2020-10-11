@@ -4,6 +4,8 @@ const Main = React.lazy(() => import("./Main/Main"));
 const Skills = React.lazy(() => import("./Skills/Skills"));
 
 function Home1({ randomNumber }) {
+  const scrollDiv = React.createRef();
+
   const [position, setPosition] = useState({
     clientX: -100,
     clientY: -100,
@@ -21,8 +23,8 @@ function Home1({ randomNumber }) {
 
   return (
     <React.Fragment>
-      <Main randomNumber={randomNumber} />
-      <Skills />
+      <Main randomNumber={randomNumber} scrollDiv={scrollDiv} />
+      <Skills scrollDiv={scrollDiv} />
       <div
         id="cursor"
         style={{

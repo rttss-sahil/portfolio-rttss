@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import NavBar from "../../../Others/NavBar/NavBar";
+import { CgScrollV } from "react-icons/cg";
 import "./Main.css";
 
 // PICS
 const pics = process.env.PUBLIC_URL + "/assets/img/";
 
-function Main({ randomNumber }) {
+function Main({ randomNumber, scrollDiv }) {
   const [span1_Class, setSpan1_Class] = useState("span1 opened"),
     [span2_Class, setSpan2_Class] = useState("span2 opened"),
     [span3_Class, setSpan3_Class] = useState("span3"),
@@ -16,6 +17,7 @@ function Main({ randomNumber }) {
     [main_Figure_Class, setMain_Figure_Class] = useState(
       "main__figure aos-init"
     ),
+    [button_Scroll_Class, setButton_Scroll_Class] = useState("btn__scroll"),
     [scrollY, setScrollY] = useState(0);
   window.addEventListener("scroll", () => {
     window.scrollY >= 0
@@ -28,9 +30,13 @@ function Main({ randomNumber }) {
       setSpan2_Class("span2");
       setMain_Figure_Class("main__figure aos-init");
     }
-    window.scrollY >= 50
-      ? setSpan3_Class("span3 opened")
-      : setSpan3_Class("span3");
+    if (window.scrollY >= 50) {
+      setSpan3_Class("span3 opened");
+      setButton_Scroll_Class("btn__scroll animate");
+    } else {
+      setSpan3_Class("span3");
+      setButton_Scroll_Class("btn__scroll");
+    }
     if (window.scrollY >= 100) {
       setSpan4_Class("span4 opened");
       setMain_View_Class("main__view aos__init aos-animate");
@@ -159,6 +165,19 @@ function Main({ randomNumber }) {
             />
           </div>
         </div>
+        <button
+          onClick={(e) => {
+            if (scrollDiv.current) {
+              scrollDiv.current.scrollIntoView({
+                behaviour: "smooth",
+                block: "nearest",
+              });
+            }
+          }}
+          className={button_Scroll_Class}
+        >
+          <CgScrollV />
+        </button>
       </div>
     </React.Fragment>
   );

@@ -26,11 +26,13 @@ img {
 .main__bg {
  position: absolute;
  top: 0;
- right: -150px;
+ right: 0;
  z-index: -8;
+ height: 140vh;
 }
 
 .main__bg img {
+ height: 150vh;
  max-width: 1440px;
 }
 
@@ -45,7 +47,7 @@ img {
 .main .main__center {
  margin-top: 15rem;
  padding: 0 1rem;
- max-width: 320px;
+ /* max-width: 320px; */
 }
 
 @media (min-width: 768px) {
@@ -138,7 +140,7 @@ img {
  .main__view {
   max-width: 720px;
   width: 60%;
-  margin: -10rem 0 0 15%;
+  margin: -10rem 0 0 20%;
   /* bottom: -10rem; */
   right: -18rem;
  }
@@ -262,5 +264,49 @@ img {
  .main__figure:last-child {
   top: 40vh;
   right: 50vw;
+ }
+}
+
+
+/*   SCROLL BUTTON     */
+
+.btn__scroll {
+ border: 0;
+ outline: 0;
+ top: 80vh;
+ left: 3rem;
+ height: 3.5rem;
+ width: 3.5rem;
+ padding: 1rem;
+ opacity: 0;
+ transform: translateY(100%);
+ transition: all 0.4s ease;
+ position: absolute;
+ border-radius: 50%;
+ background-color: rgba(0, 0, 0, 0.01);
+ box-shadow:
+  1px 1px 10px rgba(0, 0, 0, 0.05),
+  1px 2px 10px rgba(0, 0, 0, 0.05),
+  1px 3px 10px rgba(0, 0, 0, 0.05),
+  1px 4px 10px rgba(0, 0, 0, 0.05),
+
+  -1px -1px 10px rgba(0, 0, 0, 0.01),
+  -1px -2px 10px rgba(0, 0, 0, 0.01),
+  -1px -3px 10px rgba(0, 0, 0, 0.01),
+  -1px -4px 10px rgba(0, 0, 0, 0.01);
+}
+
+.btn__scroll svg {
+ font-size: 1.25rem;
+}
+
+.btn__scroll.animate {
+ opacity: 1;
+ transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+ .btn__scroll {
+  top: 100vh;
  }
 }

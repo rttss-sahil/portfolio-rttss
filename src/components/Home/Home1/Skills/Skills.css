@@ -1,0 +1,27 @@
+.details {
+ padding: 0 2rem;
+ margin-top: 15rem;
+ z-index: -1;
+ background-repeat: no-repeat;
+ background-size: contain;
+}
+
+@media (min-width: 768px) {
+ .details {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+ }
+}
+
+.details .answer span {
+ font-size: 1.5rem;
+ height: 2.4rem;
+ width: 100%;
+}
+
+.details__center {
+ padding: 0 1rem;
+}
