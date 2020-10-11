@@ -212,12 +212,16 @@ ul a.active {
 }
 
 .menu.collapse {
+  position: fixed;
   background-color: white;
   width: 100vw;
+  max-width: 100vw;
   height: calc(100vh - 3.5rem) !important;
   opacity: 1;
   transform: translate(0);
+  overflow-y: hidden;
 }
+
 
 .menu.collapse .navbar {
   background-color: white;

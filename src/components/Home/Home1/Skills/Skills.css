@@ -1,7 +1,6 @@
 .details {
  padding: 0 2rem;
- margin-top: 15rem;
- z-index: -1;
+ margin-top: 10rem;
  background-repeat: no-repeat;
  background-size: contain;
 }
@@ -17,11 +16,198 @@
 }
 
 .details .answer span {
- font-size: 1.5rem;
- height: 2.4rem;
  width: 100%;
+ height: 2.4rem;
+ font-size: 1.5rem;
+ opacity: 0;
+ transform: translateY(100%);
+ transition: all 0.4s ease;
+}
+
+.details .answer :nth-child(2) {
+ transition-delay: 0.25s;
+}
+
+.details .answer :nth-child(3) {
+ transition-delay: 0.5s;
+}
+
+.details .answer.animate span {
+ opacity: 1;
+ transform: translate(0);
 }
 
 .details__center {
  padding: 0 1rem;
+}
+
+
+
+/* WEAPON SECTION                   */
+
+.weapons {
+ margin: 7.5rem 0 10rem 0;
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+}
+
+
+.weapon__header {
+ font-size: 30px;
+ margin-bottom: 2.5rem;
+}
+
+
+
+.weapon__section {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ grid-column-gap: 0.5rem;
+ grid-row-gap: 2rem;
+ opacity: 0;
+ transition: transform 0.45s ease-in-out;
+ transition: opacity 0.15s ease;
+}
+
+.weapon__section.animate {
+ opacity: 1;
+}
+
+
+.weapon {
+ padding: 1rem;
+ width: 80%;
+ cursor: pointer;
+ border-radius: 10px;
+ transition: all 0.45s ease-in-out;
+ transform: translateY(100%);
+ box-shadow:
+  1px 1px 10px rgba(0, 0, 0, 0.1),
+  1px 2px 10px rgba(0, 0, 0, 0.1),
+  1px 3px 10px rgba(0, 0, 0, 0.01),
+  1px 4px 10px rgba(0, 0, 0, 0.01),
+
+  -1px -1px 10px rgba(0, 0, 0, 0.01),
+  -1px -2px 10px rgba(0, 0, 0, 0.01),
+  -1px -3px 10px rgba(0, 0, 0, 0.01),
+  -1px -4px 10px rgba(0, 0, 0, 0.01);
+}
+
+.weapon::after {
+ content: attr(alt);
+ position: absolute;
+ right: 0;
+ display: flex;
+ justify-content: center;
+ width: 100%;
+ bottom: 10px;
+ font-size: 10px;
+ transform: translateY(50%);
+ opacity: 1;
+ transition: all 0.4s ease;
+ text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.weapon img {
+ z-index: -1;
+}
+
+
+.weapon:hover::after {
+ opacity: 1;
+ transform: translateY(0);
+ transition: all 0.3 ease;
+
+}
+
+.weapon__section.animate .weapon {
+ transform: translateY(0);
+}
+
+@media (min-width:768px) {
+ .weapon {
+  box-shadow:
+   1px 1px 10px rgba(0, 0, 0, 0.1),
+   1px 2px 10px rgba(0, 0, 0, 0.1),
+   1px 3px 10px rgba(0, 0, 0, 0.1),
+   1px 4px 10px rgba(0, 0, 0, 0.1),
+
+   -1px -1px 10px rgba(0, 0, 0, 0.01),
+   -1px -2px 10px rgba(0, 0, 0, 0.01),
+   -1px -3px 10px rgba(0, 0, 0, 0.01),
+   -1px -4px 10px rgba(0, 0, 0, 0.01);
+ }
+
+ .weapon__section {
+  grid-template-columns: repeat(6, 1fr);
+ }
+
+ .weapon::after {
+  font-size: 12px;
+  opacity: 0;
+ }
+}
+
+
+/* DETAILS FIGURE              */
+
+
+.details {
+ position: relative;
+}
+
+.details__figure {
+ position: absolute;
+ z-index: -5;
+ opacity: 0;
+ transition: opacity 0.5s ease;
+}
+
+.details__figure.animate {
+ opacity: 1;
+}
+
+.details__figure:nth-child(1) {
+ top: -5rem;
+ right: 0;
+ width: 10rem;
+}
+
+.details__figure:nth-child(2) {
+ top: 8rem;
+ left: -2rem;
+ width: 15rem;
+}
+
+.details__figure:nth-child(3) {
+ top: 23rem;
+ right: 0rem;
+ width: 20rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px) {
+ .details__figure:nth-child(1) {
+  width: 20rem;
+ }
+
+ .details__figure:nth-child(2) {
+  width: 25rem;
+  top: 7rem;
+ }
+
+ .details__figure:nth-child(3) {
+  width: 40rem;
+ }
 }
