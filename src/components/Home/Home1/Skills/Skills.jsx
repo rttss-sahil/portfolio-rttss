@@ -12,8 +12,8 @@ function Skills({ scrollDiv }) {
     [answer_Class, setAnswer_Class] = useState("answer"),
     [figure_Class, setFigure_class] = useState("details__figure");
   window.addEventListener("scroll", () => {
-    setScrollY(window.scrollY);
     if (window.pageYOffset >= 500) {
+      setScrollY(window.scrollY);
       setAnswer_Class("answer animate");
       setFigure_class("details__figure animate");
     } else {

@@ -4,11 +4,14 @@
   position: absolute;
   left: 0;
   top: 0;
+  right: 0;
+  bottom: 0;
   height: 5rem;
   width: 100%;
   background-color: transparent;
   z-index: 999;
 }
+
 
 @media (min-width: 768px) {
   .navbar {
@@ -39,14 +42,17 @@
   align-items: center;
   flex-direction: row;
   transition: all 0.3s ease-in;
-}
-
-.head.head__white {
   background-color: white;
 }
 
+
 .head .logo {
   font-size: 1.25rem;
+  transition: all 0.5s ease;
+}
+
+.head .logo:hover {
+  color: black;
 }
 
 @media (min-width: 768px) {
@@ -212,7 +218,8 @@ ul a.active {
 }
 
 .menu.collapse {
-  position: fixed;
+  position: absolute;
+  top: 70px;
   background-color: white;
   width: 100vw;
   max-width: 100vw;
@@ -221,6 +228,8 @@ ul a.active {
   transform: translate(0);
   overflow-y: hidden;
 }
+
+
 
 
 .menu.collapse .navbar {

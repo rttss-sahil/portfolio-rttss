@@ -9,24 +9,21 @@ import {
 } from "react-icons/ai";
 import "./NavBar1.css";
 
-function NavBar1(props) {
+function NavBar1() {
   const [NAV_TOGGLE_Class, setNAV_TOGGLE_Class] = useState("nav-toggle"),
     [MENU_Class, setMENU_Class] = useState("menu"),
-    [head_Class, setHead_Class] = useState("head"),
     handleNAV_TOGGLE_Click = () => {
+      document.body.classList.toggle("no-scroll");
       NAV_TOGGLE_Class === "nav-toggle"
         ? setNAV_TOGGLE_Class("nav-toggle open")
         : setNAV_TOGGLE_Class("nav-toggle");
       MENU_Class === "menu"
         ? setMENU_Class("menu collapse")
         : setMENU_Class("menu");
-      head_Class === "head"
-        ? setHead_Class("head head__white")
-        : setHead_Class("head");
     };
   return (
     <React.Fragment>
-      <div className={head_Class}>
+      <div className="head">
         <NavLink to="/" className="logo">
           Sahil Rathee
         </NavLink>

@@ -16,3 +16,10 @@ body {
  overflow-x: hidden;
  max-width: 100vw;
 }
+
+body.no-scroll {
+ overflow: hidden;
+}
+body::-webkit-scrollbar {
+ display: none;
+}

@@ -20,7 +20,7 @@ img {
 }
 
 
-/* MAIN BACKGROUND  */
+/* MAIN BACKGROUND                                   */
 
 
 .main__bg {
@@ -37,12 +37,12 @@ img {
 }
 
 @media (max-width: 768px) {
-  .main__bg {
+  .main__bg img{
     display: none;
   }
 }
 
-/*    MAIN CENTER     */
+/*    MAIN CENTER                            */
 
 .main .main__center {
   margin-top: 15rem;
@@ -125,7 +125,7 @@ img {
   }
 }
 
-/*    MAIN VIEW    */
+/*    MAIN VIEW                                */
 
 
 .main__view {
@@ -227,7 +227,7 @@ img {
   transition: transform 0.1s;
 }
 
-/*      MAIN FIGURES     */
+/*      MAIN FIGURES                                */
 
 .main__figure {
   position: absolute;
