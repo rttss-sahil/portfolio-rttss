@@ -1,3 +1,4 @@
+/* PROJECTS                                     */
 .projects {
  padding: 0 2rem;
  margin: 10rem 0;
@@ -5,32 +6,56 @@
 
 .projects .projects__slider {
  margin-top: 8rem;
- display: grid;
+ /* display: grid; */
+ /* place-items: center; */
+ /* width: 4000px; */
 }
 
 
+.project2, .project3 {
+ transform: translateX(-100%);
+}
+
 @media (min-width: 768px) {
  .projects .projects__slider {
-  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
  }
+ 
 }
 
 @media (min-width: 1200px) {
  .projects .projects__slider {
-  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(3, 1fr); */
  }
 }
 
+.project__center .answer,
+.project__center .answer span {
+ transition: opacity 0.15s ease;
+}
 
+/* PROJECT                                    */
 .project {
  display: flex;
  flex-direction: column;
- height: 60vh;
- justify-content: space-evenly;
  align-items: center;
+ justify-content: space-evenly;
+ border-radius: 10px;
+ /* border: 1px solid; */
+ /* height: 60vh; */
+ width: 80vw;
+ padding: 2rem 3rem;
  opacity: 0;
  transform: translateY(50%);
  transition: all 0.4s ease-in;
+}
+
+.project:hover {
+ box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.11);
+}
+
+.project:hover .project__image {
+ transform: scale(1.05);
 }
 
 .project.animate {
@@ -41,17 +66,147 @@
  height:12rem;
  width: 12rem;
  border-radius: 50%;
+ transition: all 0.5s ease;
 }
 
 .project .project__image img {
- max-width: 4rem;
+ margin: 0.75rem 0 0 3rem;
+ max-width: 10rem;
  /* max-height: 4rem; */
 }
 
-.project .project__header{
-
+.project:nth-child(3) img {
+ max-width: 8rem;
+ margin: 0.75rem 0 0 3.5rem;
 }
 
-.project .project__description{}
+.project .project__header{
+ font-weight: 650;
+ margin: 2rem 0;
+}
 
-.project .project__button {}
+.project .project__description{
+ font-size: 14px;
+ color: #6c757d;
+ padding: 1rem;
+ text-align: center;
+ width: 22rem;
+}
+
+.project .project__button {
+ color: white;
+ padding: 10px 25px;
+ border-radius: 15px;
+ background-color: #00113B;
+ cursor: pointer;
+ transform: translateY(10px);
+ transition: transform 0.3s ease-in;
+}
+
+.project__button:hover {
+ transform: translate(0);
+}
+
+
+
+/* SLIDER BUTTONS                            */
+
+
+.project__changer {
+ margin-top: 5rem;
+ display: flex;
+ justify-content: center;
+}
+
+
+.project__changer .changer__next,
+.project__changer .changer__prev {
+ position: relative;
+ height: 2.5rem;
+ width: 6rem;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ cursor: pointer;
+ /* border: 1px solid; */
+}
+
+.prev__btn,
+.next__btn {
+ height: 2px;
+ width: 3rem;
+ position: relative;
+ border-radius: 999px;
+ background-color: #6c757d;
+ transition: all 0.25s ease;
+}
+.prev__btn {margin-right: 0rem;}
+.next__btn {margin-left: 0rem;}
+
+.prev__btn::before {
+ content: '';
+ position: absolute;
+ top: -4.5px;
+ left: -1px;
+ height:10px;
+ width: 10px;
+ transform: rotate(45deg);
+ /* background-color: red; */
+ border-bottom: 2px solid #6c757d;
+ border-left: 2px solid #6c757d;
+}
+
+.next__btn::after {
+ content: '';
+ position: absolute;
+ top: -4.5px;
+ right: -1px;
+ height:10px;
+ width: 10px;
+ transform: rotate(45deg);
+ border-right: 2px solid #6c757d;
+ border-top: 2px solid #6c757d;
+}
+
+.changer__next span, .changer__prev span {
+ position: absolute;
+ top: 0;
+ height: 2.5rem;
+ width: 2.5rem;
+ border-radius: 50%;
+ border: 2px solid rgb(30, 30, 255);
+ opacity: 0;
+ transition: all 0.35s ease;
+}
+
+.changer__next span {
+ right: -25px;
+ transform: translateX(-30px);
+}
+.changer__prev span{
+ left: -25px;
+ transform: translateX(30px);
+}
+
+.changer__prev:hover .prev__btn::before ,
+.changer__next:hover .next__btn::after {
+ border-color: #00113B;
+}
+
+.changer__next:hover .next__btn,
+.changer__prev:hover .prev__btn {
+ background-color: #00113B;
+ width: 4rem;
+}
+.changer__prev:hover .prev__btn {
+ transform: translateX(-1.5rem);
+}
+.changer__next:hover .next__btn {
+ transform: translateX(1.5rem);
+}
+
+.changer__next:hover span ,
+.changer__prev:hover span {
+ opacity: 1;
+ transform: translateX(0);
+}
