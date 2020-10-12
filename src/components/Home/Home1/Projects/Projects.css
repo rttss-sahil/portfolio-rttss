@@ -17,16 +17,16 @@
 }
 
 @media (min-width: 768px) {
- .projects .projects__slider {
+ /* .projects .projects__slider { */
   /* grid-template-columns: repeat(2, 1fr); */
- }
+ /* } */
  
 }
 
 @media (min-width: 1200px) {
- .projects .projects__slider {
+ /* .projects .projects__slider { */
   /* grid-template-columns: repeat(3, 1fr); */
- }
+ /* } */
 }
 
 .project__center .answer,
