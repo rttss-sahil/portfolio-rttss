@@ -1,68 +1,76 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Swipeable } from "react-swipeable";
 import "./Projects.css";
 
-const pics = process.env.PUBLIC_URL + "/assets/img/";
+const pics = process.env.PUBLIC_URL + "/assets/img/",
+  projects = [
+    {
+      id: "1",
+      imageColor: "#FFD301",
+      image: "cursor",
+      header: "Full-fledged Web-Apps",
+      description:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
+      classname: "project1",
+    },
+    {
+      id: "2",
+      imageColor: "#EAADAD",
+      image: "color-picker",
+      header: "PWA Collection",
+      description:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
+      classname: "project2",
+    },
+    {
+      id: "3",
+      imageColor: "#4C40F7",
+      image: "hand",
+      header: "UI Projects",
+      description:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
+      classname: "project3",
+    },
+  ];
 
-const ProjectMaker = ({
-  imageColor,
-  image,
-  header,
-  description,
-  classname,
-}) => {
-  const [project_Class, setProject_Class] = useState("project");
-  window.addEventListener("scroll", () => {
-    window.pageYOffset >= 1450
-      ? setProject_Class("project animate")
-      : setProject_Class("project");
-  });
-  return (
-    <div className={`${project_Class} ${classname}`}>
-      <div
-        className={`project__image`}
-        style={{
-          background: `${imageColor}`,
-        }}
-      >
-        <img src={`${pics}${image}.png`} alt={`${header}`} />
-      </div>
-      <div className="project__header">{header}</div>
-      <div className="project__description">{description}</div>
-      <div className="project__button">View Collection</div>
-    </div>
-  );
-};
-
-function Projects() {
-  const // [scrollY, setscrollY] = useState(0),
-    sliderItems = 3,
-    [currentSliderIndex, setCurrentSliderIndex] = useState(1),
+function Projects({ getwidth, scrollY }) {
+  const sliderItems = projects.length,
+    lastIndex = sliderItems - 1,
+    [currentSliderIndex, setCurrentSliderIndex] = useState([0]),
+    [project_Class, setProject_Class] = useState("project"),
     [answer_Class, setAnswer_Class] = useState("answer");
 
-  window.addEventListener("scroll", () => {
-    if (window.pageYOffset >= 1150) {
-      // setscrollY(window.scrollY);
-      setAnswer_Class("answer animate");
-    } else {
-      setAnswer_Class("answer");
-    }
-  });
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset >= 1300) {
+        setAnswer_Class("answer animate");
+      } else {
+        setAnswer_Class("answer");
+      }
+      window.pageYOffset >= 1350
+        ? setProject_Class("project animate")
+        : setProject_Class("project");
+    });
+    window.innerWidth >= 768 && setCurrentSliderIndex([0, 1]);
+    window.innerWidth >= 1200 && setCurrentSliderIndex([0, 1, 2]);
+  }, []);
 
+  // PREVIOUS SLIDE
   const previousSlide = () => {
-    const lastIndex = sliderItems - 1;
-    const shouldReset = currentSliderIndex === 0;
-    const index = shouldReset ? lastIndex : currentSliderIndex;
-
-    setCurrentSliderIndex(index);
+    const shouldReset = currentSliderIndex[0] === 0;
+    const index = shouldReset ? lastIndex : currentSliderIndex[0] - 1;
+    window.innerWidth >= 768
+      ? setCurrentSliderIndex([index, currentSliderIndex[0]])
+      : setCurrentSliderIndex([index]);
   };
 
+  // NEXT SLIDE
   const nextSlide = () => {
-    const lastIndex = sliderItems - 1;
-    const shouldReset = currentSliderIndex === lastIndex;
-    const index = shouldReset ? 0 : currentSliderIndex + 1;
-
-    setCurrentSliderIndex(index);
+    const shouldReset = currentSliderIndex[0] === lastIndex;
+    const index = shouldReset ? 0 : currentSliderIndex[0] + 1;
+    window.innerWidth >= 768
+      ? setCurrentSliderIndex([index, index + 1 > lastIndex ? 0 : index + 1])
+      : setCurrentSliderIndex([index]);
   };
 
   return (
@@ -78,33 +86,41 @@ function Projects() {
           <span>for all your needs.</span>
         </div>
       </div>
-      <div className="projects__slider">
-        <ProjectMaker
-          imageColor="#FFD301"
-          image="cursor"
-          header="Full-fledged Web-Apps"
-          description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            porro cupiditate adipisci sunt rerum vitae explicabo quibusdam"
-          classname="project1"
-        />
-        <ProjectMaker
-          imageColor="#EAADAD"
-          image="color-picker"
-          header="PWA Collection"
-          description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            porro cupiditate adipisci sunt rerum vitae explicabo quibusdam"
-          classname="project2"
-        />
-        <ProjectMaker
-          imageColor="#4C40F7"
-          image="hand"
-          header="UI Projects"
-          description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            porro cupiditate adipisci sunt rerum vitae explicabo quibusdam"
-          classname="project3"
-        />
-      </div>
-      {console.log(currentSliderIndex)}
+      <Swipeable onSwipedLeft={previousSlide} onSwipedRight={nextSlide}>
+        <div className="projects__slider">
+          {console.log(currentSliderIndex)}
+          {currentSliderIndex.map((index) =>
+            projects.map(
+              (project, i) =>
+                index === i && (
+                  <div
+                    key={i}
+                    className={`${project_Class} ${project.classname} ${
+                      currentSliderIndex.includes(i) ? "active" : ""
+                    }`}
+                  >
+                    <div
+                      className={`project__image`}
+                      style={{
+                        background: `${project.imageColor}`,
+                      }}
+                    >
+                      <img
+                        src={`${pics}${project.image}.png`}
+                        alt={`${project.header}`}
+                      />
+                    </div>
+                    <div className="project__header">{project.header}</div>
+                    <div className="project__description">
+                      {project.description}
+                    </div>
+                    <div className="project__button">View Collection</div>
+                  </div>
+                )
+            )
+          )}
+        </div>
+      </Swipeable>
       <div className="project__changer">
         <div className="changer__prev" onClick={previousSlide}>
           <span></span>

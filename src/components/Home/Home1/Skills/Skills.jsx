@@ -4,23 +4,21 @@ import "./Skills.css";
 
 const pics = `${process.env.PUBLIC_URL}/assets/img/`;
 
-function Skills({ scrollDiv }) {
-  const [scrollY, setScrollY] = useState(0),
-    [weapon_Section_Class, setWeapon_Section_Class] = useState(
+function Skills({ scrollDiv, scrollY }) {
+  const [weapon_Section_Class, setWeapon_Section_Class] = useState(
       "weapon__section"
     ),
     [answer_Class, setAnswer_Class] = useState("answer"),
     [figure_Class, setFigure_class] = useState("details__figure");
   window.addEventListener("scroll", () => {
-    if (window.pageYOffset >= 500) {
-      setScrollY(window.scrollY);
+    if (window.pageYOffset >= 600) {
       setAnswer_Class("answer animate");
       setFigure_class("details__figure animate");
     } else {
       setAnswer_Class("answer");
       setFigure_class("details__figure");
     }
-    window.pageYOffset >= 680
+    window.pageYOffset >= 850
       ? setWeapon_Section_Class("weapon__section animate")
       : setWeapon_Section_Class("weapon__section");
   });
@@ -77,7 +75,7 @@ function Skills({ scrollDiv }) {
           <img
             src={`${pics}figure-2.png`}
             style={{
-              transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
+              transform: `translate3d(0px, ${(-scrollY + 350) / 3}px, 0px)`,
               transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
             }}
             alt=""
@@ -87,7 +85,7 @@ function Skills({ scrollDiv }) {
           <img
             src={`${pics}figure-3.png`}
             style={{
-              transform: `translate3d(0px, ${(-scrollY + 350) / 8}px, 0px)`,
+              transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
               transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
             }}
             alt=""

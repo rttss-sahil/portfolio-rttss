@@ -1,67 +1,76 @@
 /* PROJECTS                                     */
 .projects {
- padding: 0 2rem;
  margin: 10rem 0;
 }
 
-.projects .projects__slider {
- margin-top: 8rem;
- /* display: grid; */
- /* place-items: center; */
- /* width: 4000px; */
+.projects .answer, .projects .question {
+ margin-left: 3rem;
 }
 
-
-.project2, .project3 {
- transform: translateX(-100%);
+.projects .projects__slider {
+ position: relative;
+ padding: 10rem 2rem 2rem;
+ overflow: hidden;
+ display: grid;
+ grid-column-gap: 2rem;
+ place-items: center;
 }
 
 @media (min-width: 768px) {
- /* .projects .projects__slider { */
-  /* grid-template-columns: repeat(2, 1fr); */
- /* } */
+ .projects__slider {
+  grid-template-columns: repeat(2, 1fr);
+ }
  
 }
 
 @media (min-width: 1200px) {
- /* .projects .projects__slider { */
-  /* grid-template-columns: repeat(3, 1fr); */
- /* } */
+ .projects__slider {
+  grid-template-columns: repeat(3, 1fr);
+ }
 }
 
-.project__center .answer,
-.project__center .answer span {
- transition: opacity 0.15s ease;
-}
 
 /* PROJECT                                    */
 .project {
+ width: 95%;
+ padding: 2rem 0;
+ border-radius: 20px;
+ opacity: 0;
  display: flex;
  flex-direction: column;
  align-items: center;
- justify-content: space-evenly;
- border-radius: 10px;
- /* border: 1px solid; */
- /* height: 60vh; */
- width: 80vw;
- padding: 2rem 3rem;
- opacity: 0;
- transform: translateY(50%);
+ justify-content: center;
  transition: all 0.4s ease-in;
+ animation-name: transform;
+ animation-duration: 0.4s;
+ animation-iteration-count: 1;
 }
 
-.project:hover {
- box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.11);
+.project:not(.active) {
+ display: none;
+}
+
+
+.project:hover,
+.project:focus {
+ box-shadow: 
+ 0px 20px 20px rgba(0, 0, 0, 0.21),
+ 0px -0.5px 1px rgba(0, 0, 0, 0.21);
 }
 
 .project:hover .project__image {
- transform: scale(1.05);
+ transform: scale(1.1);
 }
 
-.project.animate {
+.project.animate.active {
  opacity: 1;
- transform: translateY(0);
 }
+
+@keyframes transform {
+ 0% {transform:  rotateY(45deg)}
+ /* 100%{transform: rotate(0)} */
+}
+
 .project .project__image {
  height:12rem;
  width: 12rem;
@@ -99,12 +108,22 @@
  border-radius: 15px;
  background-color: #00113B;
  cursor: pointer;
+ opacity: 0;
  transform: translateY(10px);
- transition: transform 0.3s ease-in;
+ transition: all 0.5s ease-in, transform 0.3s ease-in-out;
 }
 
+.project:hover .project__button{
+ opacity: 1;
+}
 .project__button:hover {
  transform: translate(0);
+}
+
+@media (max-width: 768px) {
+.project .project__button{
+ opacity: 1;
+}
 }
 
 
@@ -113,7 +132,6 @@
 
 
 .project__changer {
- margin-top: 5rem;
  display: flex;
  justify-content: center;
 }
@@ -123,12 +141,11 @@
 .project__changer .changer__prev {
  position: relative;
  height: 2.5rem;
- width: 6rem;
+ width: 5rem;
  display: flex;
  justify-content: center;
  align-items: center;
  cursor: pointer;
- /* border: 1px solid; */
 }
 
 .prev__btn,
@@ -146,12 +163,11 @@
 .prev__btn::before {
  content: '';
  position: absolute;
- top: -4.5px;
- left: -1px;
+ /* top: -4.5px; */
+ left: -4px;
  height:10px;
  width: 10px;
- transform: rotate(45deg);
- /* background-color: red; */
+ transform: rotate(45deg) translateY(-7px);
  border-bottom: 2px solid #6c757d;
  border-left: 2px solid #6c757d;
 }
@@ -159,33 +175,32 @@
 .next__btn::after {
  content: '';
  position: absolute;
- top: -4.5px;
- right: -1px;
+ right: 4px;
  height:10px;
  width: 10px;
- transform: rotate(45deg);
+ transform: rotate(45deg) translateY(-7px);
  border-right: 2px solid #6c757d;
  border-top: 2px solid #6c757d;
 }
 
 .changer__next span, .changer__prev span {
  position: absolute;
- top: 0;
- height: 2.5rem;
- width: 2.5rem;
+ height:1.5rem;
+ width: 1.5rem;
  border-radius: 50%;
- border: 2px solid rgb(30, 30, 255);
+ border: 1.75px solid rgb(30, 30, 255);
  opacity: 0;
  transition: all 0.35s ease;
+}
+
+.changer__prev span{
+ left: -25px;
+ transform: translateX(30px);
 }
 
 .changer__next span {
  right: -25px;
  transform: translateX(-30px);
-}
-.changer__prev span{
- left: -25px;
- transform: translateX(30px);
 }
 
 .changer__prev:hover .prev__btn::before ,
@@ -208,5 +223,12 @@
 .changer__next:hover span ,
 .changer__prev:hover span {
  opacity: 1;
- transform: translateX(0);
+ transform: scale(1.5) translateX(0);
+}
+
+
+@media (min-width: 1200px) {
+ .project__changer{
+  display: none;
+ }
 }

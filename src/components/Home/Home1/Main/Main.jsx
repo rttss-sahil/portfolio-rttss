@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import NavBar from "../../../Others/NavBar/NavBar";
 import { CgScrollV } from "react-icons/cg";
+
+// CSS
 import "./Main.css";
+import { useEffect } from "react";
 
 // PICS
 const pics = process.env.PUBLIC_URL + "/assets/img/";
 
-function Main({ randomNumber, scrollDiv }) {
+function Main({ randomNumber, scrollDiv, scrollY }) {
   const [span1_Class, setSpan1_Class] = useState("span1 opened"),
     [span2_Class, setSpan2_Class] = useState("span2 opened"),
     [span3_Class, setSpan3_Class] = useState("span3"),
@@ -17,37 +20,36 @@ function Main({ randomNumber, scrollDiv }) {
     [main_Figure_Class, setMain_Figure_Class] = useState(
       "main__figure aos-init"
     ),
-    [button_Scroll_Class, setButton_Scroll_Class] = useState("btn__scroll"),
-    [scrollY, setScrollY] = useState(0);
-  window.addEventListener("scroll", () => {
-    window.scrollY >= 0
-      ? setSpan1_Class("span1 opened")
-      : setSpan1_Class("span1");
-    if (window.scrollY >= 15) {
-      setSpan2_Class("span2 opened");
-      setMain_Figure_Class("main__figure aos-init aos-animate");
-    } else {
-      setSpan2_Class("span2");
-      setMain_Figure_Class("main__figure aos-init");
-    }
-    if (window.scrollY >= 50) {
-      setSpan3_Class("span3 opened");
-      setButton_Scroll_Class("btn__scroll animate");
-    } else {
-      setSpan3_Class("span3");
-      setButton_Scroll_Class("btn__scroll");
-    }
-    if (window.scrollY >= 100) {
-      setSpan4_Class("span4 opened");
-      setMain_View_Class("main__view aos__init aos-animate");
-      setScrollY(window.scrollY);
-    } else {
-      setSpan4_Class("span4");
-      setMain_View_Class("main__view aos-init");
-      setScrollY(window.scrollY);
-    }
-  });
+    [button_Scroll_Class, setButton_Scroll_Class] = useState("btn__scroll");
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      window.pageYOffset >= 0
+        ? setSpan1_Class("span1 opened")
+        : setSpan1_Class("span1");
+      if (window.pageYOffset >= 100) {
+        setSpan2_Class("span2 opened");
+        setMain_Figure_Class("main__figure aos-init aos-animate");
+      } else {
+        setSpan2_Class("span2");
+        setMain_Figure_Class("main__figure aos-init");
+      }
+      if (window.pageYOffset >= 150) {
+        setSpan3_Class("span3 opened");
+        setButton_Scroll_Class("btn__scroll animate");
+      } else {
+        setSpan3_Class("span3");
+        setButton_Scroll_Class("btn__scroll");
+      }
+      if (window.pageYOffset >= 200) {
+        setSpan4_Class("span4 opened");
+        setMain_View_Class("main__view aos__init aos-animate");
+      } else {
+        setSpan4_Class("span4");
+        setMain_View_Class("main__view aos-init");
+      }
+    });
+  }, []);
   return (
     <React.Fragment>
       <div className="main">
@@ -84,7 +86,7 @@ function Main({ randomNumber, scrollDiv }) {
               src={`${pics}main-pic-1.png`}
               style={{
                 transform: `translate3d(0px, ${(-scrollY + 50) / 5}px, 0px)`,
-                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
             />
@@ -95,7 +97,7 @@ function Main({ randomNumber, scrollDiv }) {
               src={`${pics}main-pic-2.png`}
               style={{
                 transform: `translate3d(0px, ${(-scrollY + 150) / 8}px, 0px)`,
-                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
             />
@@ -105,7 +107,7 @@ function Main({ randomNumber, scrollDiv }) {
               className="main__pic"
               src={`${pics}main-pic-3.png`}
               style={{
-                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
             />
@@ -115,7 +117,7 @@ function Main({ randomNumber, scrollDiv }) {
               className="main__pic"
               src={`${pics}main-pic-4.png`}
               style={{
-                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
             />
@@ -126,7 +128,7 @@ function Main({ randomNumber, scrollDiv }) {
               src={`${pics}main-pic-5.png`}
               style={{
                 transform: `translate3d(0px, ${(-scrollY + 150) / 8}px, 0px)`,
-                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
             />
@@ -137,7 +139,7 @@ function Main({ randomNumber, scrollDiv }) {
               src={`${pics}main-pic-7.png`}
               style={{
                 transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
-                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
             />
@@ -149,7 +151,7 @@ function Main({ randomNumber, scrollDiv }) {
               src={`${pics}figure-1.png`}
               style={{
                 transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
-                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
             />
@@ -159,7 +161,7 @@ function Main({ randomNumber, scrollDiv }) {
               src={`${pics}figure-2.png`}
               style={{
                 transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
-                transition: "transform 0.5s cubic-bezier(0, 0, 0, 1) 0s",
+                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
               }}
               alt=""
             />

@@ -83,7 +83,7 @@ img {
   height: 3rem;
   width: 70vw;
   color: black;
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 
@@ -161,7 +161,7 @@ img {
 }
 
 .main__preview:nth-child(1) {
-  transition-delay: 0.4s;
+  transition-delay: 1s;
 }
 
 .main__preview:nth-child(2) {
@@ -169,7 +169,7 @@ img {
   top: -16%;
   z-index: -1;
   width: 17%;
-  transition-delay: 0.1s;
+  transition-delay: 0.25s;
 }
 
 .main__preview:nth-child(3) {
@@ -177,7 +177,7 @@ img {
   top: -14%;
   z-index: -2;
   width: 33.5%;
-  transition-delay: 0.2s;
+  transition-delay: 1.45s;
 }
 
 .main__preview:nth-child(4) {
@@ -185,7 +185,7 @@ img {
   top: 19.9%;
   z-index: 0;
   width: 33.5%;
-  transition-delay: 0.3s;
+  transition-delay: 0.6s;
 }
 
 .main__preview:nth-child(5) {
@@ -193,7 +193,7 @@ img {
   top: 20%;
   z-index: 0;
   width: 25%;
-  transition-delay: 0.3s;
+  transition-delay: 0.6s;
 }
 
 .main__preview:nth-child(6) {
@@ -201,7 +201,7 @@ img {
   top: 35.5%;
   z-index: 0;
   width: 8%;
-  transition-delay: .3s;
+  transition-delay: .8s;
 }
 
 .main__preview:nth-child(7) {

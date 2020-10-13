@@ -22,24 +22,25 @@
  font-size: 1.5rem;
  opacity: 0;
  transform: translateY(100%);
- transition: transform 0.4s ease;
- transition: opacity 0.15s ease;
+ transition: 
+ opacity 0.05s ease-in-out,
+  transform 0.4s ease-in;
 }
 
 .details .answer :nth-child(2),
 .projects .answer :nth-child(2) {
- transition-delay: 0.25s;
+  transition-delay: 0.25s;
 }
 
 .details .answer :nth-child(3),
 .projects .answer :nth-child(3) {
- transition-delay: 0.5s;
+  transition-delay: 0.4s;
 }
 
 .details .answer.animate span,
 .projects .answer.animate span {
- opacity: 1;
- transform: translate(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .details__center {
@@ -72,8 +73,7 @@
  grid-column-gap: 0.5rem;
  grid-row-gap: 2rem;
  opacity: 0;
- transition: transform 0.45s ease-in-out;
- transition: opacity 0.15s ease;
+ transition: transform 0.45s ease-in-out, opacity 0.15s ease;
 }
 
 .weapon__section.animate {
