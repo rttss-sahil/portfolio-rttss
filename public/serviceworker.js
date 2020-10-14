@@ -79,21 +79,23 @@ self.addEventListener("install", (e) => {
     caches
       .open(CACHE_NAME)
       .then((cache) => cache.addAll(urlsToCache))
-      // .then(() => console.log("Cache Opened"))
+      .then(() => console.log("Cache Opened"))
       .catch((err) => console.log("Installing Error: ", err))
   );
+  return self.skipWaiting();
 });
 
 // Fetch SW
 self.addEventListener("fetch", (e) => {
   e.respondWith(
-    caches
-      .match(e.request)
-      .then((res) => res || fetch(e.request))
-      .catch((err) => {
-        console.log("matching with index, err: ", err);
-        return caches.match("index.html");
-      })
+    caches.match(e.request).then(
+      (res) =>
+        res ||
+        fetch(e.request).catch((err) => {
+          // console.log("matching with index, err: ", err);
+          return caches.match("/index.html");
+        })
+    )
   );
 });
 
@@ -106,12 +108,14 @@ self.addEventListener("activate", (e) => {
       .keys()
       .then((cacheNames) =>
         Promise.all(
-          cacheNames.map(
-            (cacheName) =>
-              !cacheWhitelist.includes(cacheName) && caches.delete(cacheName)
-          )
+          cacheNames.map((cacheName) => {
+            if (urlsToCache.indexOf(cacheName) !== -1) {
+              return caches.delete(cacheName);
+            }
+          })
         )
       )
       .catch((err) => console.log("Activation Error: ", err))
   );
+  return self.clients.claim();
 });
