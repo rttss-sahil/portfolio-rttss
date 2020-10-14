@@ -1,5 +1,5 @@
 const CACHE_NAME = "v1.1.3",
-  urlsToCache = ["/"],
+  urlsToCache = ["index.html", "./assets/img"],
   self = this;
 
 // Install SW

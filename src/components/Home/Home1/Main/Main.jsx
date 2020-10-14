@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "../../../Others/NavBar/NavBar";
-import { CgScrollV, CgWindows } from "react-icons/cg";
+import { CgScrollV } from "react-icons/cg";
 
 // CSS
 import "./Main.css";
