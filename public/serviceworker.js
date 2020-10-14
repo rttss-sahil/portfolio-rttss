@@ -31,7 +31,7 @@ self.addEventListener("install", (e) => {
     caches
       .open(CACHE_NAME)
       .then((cache) => cache.addAll(urlsToCache))
-      .catch((err) => console.log("Unable to Open cache: ", err))
+      .catch((err) => console.log("Istalling Error: ", err))
   );
 });
 
@@ -40,9 +40,11 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     caches
       .match(e.request)
-      .then((res) => (res ? res : fetch(e.request)))
-      .catch(() => {
-        caches.match("index.html");
+      .then(() => {
+        return fetch(e.request).catch((err) => caches.match("index.html"));
+      })
+      .catch((err) => {
+        console.log("Fetching Error: ", err);
       })
   );
 });
@@ -52,14 +54,16 @@ self.addEventListener("activate", (e) => {
   const cacheWhitelist = [];
   cacheWhitelist.push(CACHE_NAME);
   e.waitUntil(
-    caches.keys().then((cacheNames) =>
-      Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);
-          }
-        })
+    caches
+      .keys()
+      .then((cacheNames) =>
+        Promise.all(
+          cacheNames.map(
+            (cacheName) =>
+              cacheWhitelist.includes(cacheName) && caches.delete(cacheName)
+          )
+        )
       )
-    )
+      .catch((err) => console.log("Activation Error: ", err))
   );
 });
