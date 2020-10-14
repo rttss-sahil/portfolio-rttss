@@ -1,25 +1,26 @@
-const CACHE_NAME = "version-1.0.0",
-  urlsToCache = ["index.html"],
+const CACHE_NAME = "v1.1.3",
+  urlsToCache = ["/"],
   self = this;
 
 // Install SW
 self.addEventListener("install", (e) => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log("opened cache");
-      return cache.addAll(urlsToCache);
-    })
+    caches
+      .open(CACHE_NAME)
+      .then((cache) => cache.addAll(urlsToCache))
+      .catch((err) => console.log("Unable to Open cache: ", err))
   );
 });
 
 // Fetch SW
 self.addEventListener("fetch", (e) => {
   e.respondWith(
-    caches.match(e.request).then(() => {
-      return fetch(e.request).catch(() => {
+    caches
+      .match(e.request)
+      .then((res) => (res ? res : fetch(e.request)))
+      .catch(() => {
         caches.match("index.html");
-      });
-    })
+      })
   );
 });
 

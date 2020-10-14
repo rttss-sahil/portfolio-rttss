@@ -32,8 +32,10 @@
   <div id="app"></div>
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register('./serviceworker.js')
-        .catch(e => console.log("ServiceWorker Failure: ", e))
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register('./serviceworker.js')
+          .catch(e => console.log("ServiceWorker Failure: ", e))
+      })
     }
   </script>
 
@@ -74,7 +76,6 @@
   <script>
     window.addEventListener('touchstart', () => {
       document.getElementById('cursor').style.display = "none";
-      window.removeEventListener('touchstart')
     })
   </script>
 </body>
