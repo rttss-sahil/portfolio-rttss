@@ -1,8 +1,6 @@
 const CACHE_NAME = "v1.1.3",
   urlsToCache = [
     "./index.html",
-    "./logo.png",
-    "./manifest.json",
     "./assets/img/bg-main.jpg",
     "./assets/img/color-picker.png",
     "./assets/img/cursor.png",
@@ -33,40 +31,22 @@ self.addEventListener("install", (e) => {
     caches
       .open(CACHE_NAME)
       .then((cache) => cache.addAll(urlsToCache))
-      .catch((err) => console.log("Istalling Error: ", err))
+      .then(() => console.log("Cache Opened"))
+      .catch((err) => console.log("Installing Error: ", err))
   );
 });
 
 // Fetch SW
 self.addEventListener("fetch", (e) => {
-  console.log("fetching...");
   e.respondWith(
     caches
       .match(e.request)
-      .then((res) => {
-        if (res) {
-          console.log("found: ", e.request);
-          return res;
-        } else {
-          console.log("network req for: ", e.request);
-          return fetch(e.request)
-            .then(() => {
-              caches.match("./index.html");
-            })
-            .catch(() => {
-              caches.match("./index.html");
-            });
-        }
-        // return fetch(e.request).catch((err) => caches.match("index.html"));
-      })
-      .catch((err) => {
-        console.log("Fetching Error: ", err);
-        caches.match("./index.html");
-      })
+      .then((res) => res || fetch(e.request))
+      .catch(() => caches.match("/index.html"))
   );
 });
 
-//
+// Activate SW
 self.addEventListener("activate", (e) => {
   const cacheWhitelist = [];
   cacheWhitelist.push(CACHE_NAME);
