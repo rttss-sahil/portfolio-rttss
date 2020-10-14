@@ -40,11 +40,21 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     caches
       .match(e.request)
-      .then(() => {
-        return fetch(e.request).catch((err) => caches.match("index.html"));
+      .then((res) => {
+        if (res) {
+          console.log("found: ", e.request.url);
+          return res;
+        } else {
+          console.log("network req for: ", e.request.url);
+          return fetch(e.request).catch(() => {
+            caches.match("./index.html");
+          });
+        }
+        // return fetch(e.request).catch((err) => caches.match("index.html"));
       })
       .catch((err) => {
         console.log("Fetching Error: ", err);
+        caches.match("./index.html");
       })
   );
 });
