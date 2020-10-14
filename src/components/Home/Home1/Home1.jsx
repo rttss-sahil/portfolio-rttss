@@ -22,16 +22,24 @@ function Home1({ randomNumber }) {
 
   useEffect(() => {
     // CURSOR
-    window.addEventListener("mousemove", (e) => {
-      const { clientX, clientY } = e;
-      setPosition({
-        clientX,
-        clientY,
-      });
-    });
-    window.addEventListener("scroll", () => {
-      setScrollY(window.scrollY);
-    });
+    window.addEventListener(
+      "mousemove",
+      (e) => {
+        const { clientX, clientY } = e;
+        setPosition({
+          clientX,
+          clientY,
+        });
+      },
+      { passive: true }
+    );
+    window.addEventListener(
+      "scroll",
+      () => {
+        setScrollY(window.scrollY);
+      },
+      { passive: true }
+    );
   }, []);
 
   return (

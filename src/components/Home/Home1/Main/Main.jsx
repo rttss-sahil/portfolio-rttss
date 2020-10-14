@@ -23,32 +23,36 @@ function Main({ randomNumber, scrollDiv, scrollY }) {
     [button_Scroll_Class, setButton_Scroll_Class] = useState("btn__scroll");
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      window.pageYOffset >= 0
-        ? setSpan1_Class("span1 opened")
-        : setSpan1_Class("span1");
-      if (window.pageYOffset >= 100) {
-        setSpan2_Class("span2 opened");
-        setMain_Figure_Class("main__figure aos-init aos-animate");
-      } else {
-        setSpan2_Class("span2");
-        setMain_Figure_Class("main__figure aos-init");
-      }
-      if (window.pageYOffset >= 150) {
-        setSpan3_Class("span3 opened");
-        setButton_Scroll_Class("btn__scroll animate");
-      } else {
-        setSpan3_Class("span3");
-        setButton_Scroll_Class("btn__scroll");
-      }
-      if (window.pageYOffset >= 200) {
-        setSpan4_Class("span4 opened");
-        setMain_View_Class("main__view aos__init aos-animate");
-      } else {
-        setSpan4_Class("span4");
-        setMain_View_Class("main__view aos-init");
-      }
-    });
+    window.addEventListener(
+      "scroll",
+      () => {
+        window.pageYOffset >= 0
+          ? setSpan1_Class("span1 opened")
+          : setSpan1_Class("span1");
+        if (window.pageYOffset >= 100) {
+          setSpan2_Class("span2 opened");
+          setMain_Figure_Class("main__figure aos-init aos-animate");
+        } else {
+          setSpan2_Class("span2");
+          setMain_Figure_Class("main__figure aos-init");
+        }
+        if (window.pageYOffset >= 150) {
+          setSpan3_Class("span3 opened");
+          setButton_Scroll_Class("btn__scroll animate");
+        } else {
+          setSpan3_Class("span3");
+          setButton_Scroll_Class("btn__scroll");
+        }
+        if (window.pageYOffset >= 200) {
+          setSpan4_Class("span4 opened");
+          setMain_View_Class("main__view aos__init aos-animate");
+        } else {
+          setSpan4_Class("span4");
+          setMain_View_Class("main__view aos-init");
+        }
+      },
+      { passive: true }
+    );
   }, []);
   return (
     <React.Fragment>

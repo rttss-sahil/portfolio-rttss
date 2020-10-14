@@ -50,23 +50,31 @@ function Projects({ getwidth, scrollY }) {
     [answer_Class, setAnswer_Class] = useState("answer");
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      window.pageYOffset >= 1300
-        ? setAnswer_Class("answer animate")
-        : setAnswer_Class("answer");
+    window.addEventListener(
+      "scroll",
+      () => {
+        window.pageYOffset >= 1300
+          ? setAnswer_Class("answer animate")
+          : setAnswer_Class("answer");
 
-      window.pageYOffset >= 1350
-        ? setProject_Class("project animate")
-        : setProject_Class("project");
+        window.pageYOffset >= 1350
+          ? setProject_Class("project animate")
+          : setProject_Class("project");
 
-      window.pageYOffset >= 1450
-        ? setProjectSlider_Class("projects__slider animate")
-        : setProjectSlider_Class("projects__slider");
-    });
-    window.addEventListener("resize", () => {
-      window.innerWidth >= 768 && setCurrentSliderIndex([0, 1]);
-      window.innerWidth >= 1200 && setCurrentSliderIndex([0, 1, 2]);
-    });
+        window.pageYOffset >= 1450
+          ? setProjectSlider_Class("projects__slider animate")
+          : setProjectSlider_Class("projects__slider");
+      },
+      { passive: true }
+    );
+    window.addEventListener(
+      "resize",
+      () => {
+        window.innerWidth >= 768 && setCurrentSliderIndex([0, 1]);
+        window.innerWidth >= 1200 && setCurrentSliderIndex([0, 1, 2]);
+      },
+      { passive: true }
+    );
   }, []);
 
   // PREVIOUS SLIDE

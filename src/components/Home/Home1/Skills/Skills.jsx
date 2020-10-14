@@ -10,18 +10,22 @@ function Skills({ scrollDiv, scrollY }) {
     ),
     [answer_Class, setAnswer_Class] = useState("answer"),
     [figure_Class, setFigure_class] = useState("details__figure");
-  window.addEventListener("scroll", () => {
-    if (window.pageYOffset >= 600) {
-      setAnswer_Class("answer animate");
-      setFigure_class("details__figure animate");
-    } else {
-      setAnswer_Class("answer");
-      setFigure_class("details__figure");
-    }
-    window.pageYOffset >= 850
-      ? setWeapon_Section_Class("weapon__section animate")
-      : setWeapon_Section_Class("weapon__section");
-  });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (window.pageYOffset >= 600) {
+        setAnswer_Class("answer animate");
+        setFigure_class("details__figure animate");
+      } else {
+        setAnswer_Class("answer");
+        setFigure_class("details__figure");
+      }
+      window.pageYOffset >= 850
+        ? setWeapon_Section_Class("weapon__section animate")
+        : setWeapon_Section_Class("weapon__section");
+    },
+    { passive: true }
+  );
   return (
     <div ref={scrollDiv} className="details" id="details">
       <div className="details__center">
