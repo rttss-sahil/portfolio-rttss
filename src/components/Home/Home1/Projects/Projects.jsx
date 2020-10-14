@@ -36,7 +36,13 @@ const pics = process.env.PUBLIC_URL + "/assets/img/",
 function Projects({ getwidth, scrollY }) {
   const sliderItems = projects.length,
     lastIndex = sliderItems - 1,
-    [currentSliderIndex, setCurrentSliderIndex] = useState([0]),
+    [currentSliderIndex, setCurrentSliderIndex] = useState(
+      window.innerWidth <= 768
+        ? [0]
+        : window.innerWidth >= 1200
+        ? [0, 1, 2]
+        : [0, 1]
+    ),
     [projectSlider_Class, setProjectSlider_Class] = useState(
       "projects__slider"
     ),
@@ -57,8 +63,10 @@ function Projects({ getwidth, scrollY }) {
         ? setProjectSlider_Class("projects__slider animate")
         : setProjectSlider_Class("projects__slider");
     });
-    window.innerWidth >= 768 && setCurrentSliderIndex([0, 1]);
-    window.innerWidth >= 1200 && setCurrentSliderIndex([0, 1, 2]);
+    window.addEventListener("resize", () => {
+      window.innerWidth >= 768 && setCurrentSliderIndex([0, 1]);
+      window.innerWidth >= 1200 && setCurrentSliderIndex([0, 1, 2]);
+    });
   }, []);
 
   // PREVIOUS SLIDE

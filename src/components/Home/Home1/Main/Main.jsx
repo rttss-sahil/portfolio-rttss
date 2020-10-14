@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "../../../Others/NavBar/NavBar";
-import { CgScrollV } from "react-icons/cg";
+import { CgScrollV, CgWindows } from "react-icons/cg";
 
 // CSS
 import "./Main.css";
@@ -168,15 +168,15 @@ function Main({ randomNumber, scrollDiv, scrollY }) {
           </div>
         </div>
         <button
+          className={button_Scroll_Class}
           onClick={(e) => {
             if (scrollDiv.current) {
-              scrollDiv.current.scrollIntoView({
-                behaviour: "smooth",
-                block: "nearest",
+              window.scrollTo({
+                top: 850,
+                behavior: "smooth",
               });
             }
           }}
-          className={button_Scroll_Class}
         >
           <CgScrollV />
         </button>

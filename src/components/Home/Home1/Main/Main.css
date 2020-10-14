@@ -20,6 +20,7 @@ img {
 }
 
 
+
 /* MAIN BACKGROUND                                   */
 
 
@@ -271,18 +272,19 @@ img {
 /*   SCROLL BUTTON     */
 
 .btn__scroll {
-  border: 0;
+  cursor: pointer;
   outline: 0;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
   top: 80vh;
-  left: 3rem;
+  /* left: 3rem; */
   height: 3.5rem;
   width: 3.5rem;
   padding: 1rem;
   opacity: 0;
-  transform: translateY(100%);
+  transform: translate(2rem, 100%);
   transition: all 0.4s ease;
-  position: absolute;
-  border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.01);
   box-shadow:
     1px 1px 10px rgba(0, 0, 0, 0.05),
@@ -302,11 +304,18 @@ img {
 
 .btn__scroll.animate {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(2rem, 0);
 }
 
 @media (min-width: 768px) {
-  .btn__scroll {
-    top: 100vh;
+  @media screen and (max-height: 400px){
+    .btn__scroll {
+      top: 130vh;
+    }
+  }
+  @media screen and (min-height: 400px) {
+    .btn__scroll {
+      top: 100vh;
+    }
   }
 }

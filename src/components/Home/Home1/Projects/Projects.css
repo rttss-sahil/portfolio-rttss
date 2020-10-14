@@ -13,7 +13,6 @@
  overflow: hidden;
  display: grid;
  place-items: center;
- grid-column-gap: 2rem;
  transform: translateY(50%);
  opacity: 0;
  transition: all 0.3s ease;
