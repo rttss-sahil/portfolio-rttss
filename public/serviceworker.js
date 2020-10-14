@@ -1,6 +1,8 @@
 const CACHE_NAME = "v1.1.3",
   urlsToCache = [
-    "index.html",
+    "./index.html",
+    "./logo.png",
+    "./manifest.json",
     "./assets/img/bg-main.jpg",
     "./assets/img/color-picker.png",
     "./assets/img/cursor.png",
@@ -37,18 +39,23 @@ self.addEventListener("install", (e) => {
 
 // Fetch SW
 self.addEventListener("fetch", (e) => {
+  console.log("fetching...");
   e.respondWith(
     caches
       .match(e.request)
       .then((res) => {
         if (res) {
-          console.log("found: ", e.request.url);
+          console.log("found: ", e.request);
           return res;
         } else {
-          console.log("network req for: ", e.request.url);
-          return fetch(e.request).catch(() => {
-            caches.match("./index.html");
-          });
+          console.log("network req for: ", e.request);
+          return fetch(e.request)
+            .then(() => {
+              caches.match("./index.html");
+            })
+            .catch(() => {
+              caches.match("./index.html");
+            });
         }
         // return fetch(e.request).catch((err) => caches.match("index.html"));
       })
