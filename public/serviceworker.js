@@ -40,7 +40,7 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     caches
       .match(e.request)
-      .then((res) => (res ? res : fetch(e.request)))
+      .then((res) => fetch(e.request))
       .catch(() => {
         caches.match("index.html");
       })
