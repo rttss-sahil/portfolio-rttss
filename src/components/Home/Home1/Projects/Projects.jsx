@@ -2,38 +2,37 @@ import React, { useEffect, useState } from "react";
 import { Swipeable } from "react-swipeable";
 import "./Projects.css";
 
-const pics = process.env.PUBLIC_URL + "/assets/img/",
-  projects = [
-    {
-      id: "1",
-      imageColor: "#FFD301",
-      image: "cursor",
-      header: "Full-fledged Web-Apps",
-      description:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
-      classname: "project1",
-    },
-    {
-      id: "2",
-      imageColor: "#EAADAD",
-      image: "color-picker",
-      header: "PWA Collection",
-      description:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
-      classname: "project2",
-    },
-    {
-      id: "3",
-      imageColor: "#4C40F7",
-      image: "hand",
-      header: "UI Projects",
-      description:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
-      classname: "project3",
-    },
-  ];
+const projects = [
+  {
+    id: "1",
+    imageColor: "#FFD301",
+    image: "cursor",
+    header: "Full-fledged Web-Apps",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
+    classname: "project1",
+  },
+  {
+    id: "2",
+    imageColor: "#EAADAD",
+    image: "color-picker",
+    header: "PWA Collection",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
+    classname: "project2",
+  },
+  {
+    id: "3",
+    imageColor: "#4C40F7",
+    image: "hand",
+    header: "UI Projects",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
+    classname: "project3",
+  },
+];
 
-function Projects({ getwidth, scrollY }) {
+function Projects({ getwidth, scrollY, pics }) {
   const sliderItems = projects.length,
     lastIndex = sliderItems - 1,
     [currentSliderIndex, setCurrentSliderIndex] = useState(
@@ -70,6 +69,7 @@ function Projects({ getwidth, scrollY }) {
     window.addEventListener(
       "resize",
       () => {
+        window.innerWidth < 768 && setCurrentSliderIndex([0]);
         window.innerWidth >= 768 && setCurrentSliderIndex([0, 1]);
         window.innerWidth >= 1200 && setCurrentSliderIndex([0, 1, 2]);
       },

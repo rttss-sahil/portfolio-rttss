@@ -88,14 +88,12 @@ self.addEventListener("install", (e) => {
 // Fetch SW
 self.addEventListener("fetch", (e) => {
   e.respondWith(
-    caches.match(e.request).then(
-      (res) =>
-        res ||
-        fetch(e.request).catch((err) => {
-          // console.log("matching with index, err: ", err);
-          return caches.match("/index.html");
-        })
-    )
+    caches.match(e.request).then(() => {
+      return fetch(e.request).catch(() => {
+        // console.log("matching with index, err: ", err);
+        return caches.match("index.html");
+      });
+    })
   );
 });
 
@@ -109,7 +107,7 @@ self.addEventListener("activate", (e) => {
       .then((cacheNames) =>
         Promise.all(
           cacheNames.map((cacheName) => {
-            if (urlsToCache.indexOf(cacheName) !== -1) {
+            if (!cacheWhitelist.includes(cacheName)) {
               return caches.delete(cacheName);
             }
           })

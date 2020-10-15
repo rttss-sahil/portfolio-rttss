@@ -6,10 +6,7 @@ import { CgScrollV } from "react-icons/cg";
 import "./Main.css";
 import { useEffect } from "react";
 
-// PICS
-const pics = process.env.PUBLIC_URL + "/assets/img/";
-
-function Main({ randomNumber, scrollDiv, scrollY }) {
+function Main({ randomNumber, scrollY, pics }) {
   const [span1_Class, setSpan1_Class] = useState("span1 opened"),
     [span2_Class, setSpan2_Class] = useState("span2 opened"),
     [span3_Class, setSpan3_Class] = useState("span3"),
@@ -174,12 +171,10 @@ function Main({ randomNumber, scrollDiv, scrollY }) {
         <button
           className={button_Scroll_Class}
           onClick={(e) => {
-            if (scrollDiv.current) {
-              window.scrollTo({
-                top: 850,
-                behavior: "smooth",
-              });
-            }
+            window.scrollTo({
+              top: 850,
+              behavior: "smooth",
+            });
           }}
         >
           <CgScrollV />

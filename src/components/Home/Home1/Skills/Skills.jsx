@@ -2,9 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./Skills.css";
 
-const pics = `${process.env.PUBLIC_URL}/assets/img/`;
-
-function Skills({ scrollDiv, scrollY }) {
+function Skills({ scrollDiv, scrollY, pics }) {
   const [weapon_Section_Class, setWeapon_Section_Class] = useState(
       "weapon__section"
     ),

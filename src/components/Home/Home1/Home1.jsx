@@ -3,16 +3,15 @@ import Projects from "./Projects/Projects";
 
 // CSS
 import "./Home1.css";
+import Resume from "./Resume/Resume";
 
 // LAzy Loading
 const Main = React.lazy(() => import("./Main/Main"));
 const Skills = React.lazy(() => import("./Skills/Skills"));
 
 function Home1({ randomNumber }) {
-  //REF
-  const scrollDiv = React.createRef();
-
   // STATES
+  const pics = `${process.env.PUBLIC_URL}/assets/img/`;
   const [position, setPosition] = useState({
       clientX: -100,
       clientY: -100,
@@ -44,13 +43,10 @@ function Home1({ randomNumber }) {
 
   return (
     <React.Fragment>
-      <Main
-        randomNumber={randomNumber}
-        scrollDiv={scrollDiv}
-        scrollY={scrollY}
-      />
-      <Skills scrollDiv={scrollDiv} scrollY={scrollY} />
-      <Projects getwidth={getwidth} scrollY={scrollY} />
+      <Main randomNumber={randomNumber} scrollY={scrollY} pics={pics} />
+      <Skills scrollY={scrollY} pics={pics} />
+      <Projects getwidth={getwidth} scrollY={scrollY} pics={pics} />
+      <Resume scrollY={scrollY} pics={pics} />
       <div
         id="cursor"
         style={{
