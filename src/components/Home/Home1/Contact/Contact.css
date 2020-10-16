@@ -51,9 +51,13 @@
  opacity: 1;
 }
 
+
+
+/* FORM                                     */
+
 .contact__form form{
  margin: 5rem 0;
- padding: 3rem 3rem;
+ padding: 3rem 1rem;
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -106,6 +110,8 @@
  transform: translateY(0);
 }
 
+
+/* INPUT                                               */
 .contact__form * {
  width: 100%;
  margin: 0.25rem 0;
@@ -133,7 +139,7 @@
 .contact .input span {
   color: red;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.75rem;
 
 }
 
@@ -157,6 +163,39 @@
 }
 }
 
+
+input[disabled] {
+  opacity: 0.25;
+  cursor: none;
+}
+
+.contact__form [type="submit"][disabled] {
+  opacity: 0.25;
+  transform: translateY(25%);
+  cursor: not-allowed;
+}
+
+.contact__form.true [type="submit"] {
+  height: 2rem;
+  width: 2rem;
+  background-color: white;
+  color: white;
+  border-radius: 999px;
+  border-top: 4px solid #00113b;
+  border-bottom: 4px solid #00113b;
+  animation: always infinite 1s ease;
+}
+
+@keyframes always {
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
+
+
+
+
+
+/* SOCIAL                                        */
 .contact .contact__social a {
  text-decoration: none;
 }
@@ -168,6 +207,9 @@
  width: 100vw;
  margin-left: -3rem;
 }
+
+
+/* FOOTER                                             */
 
 .contact__footer {
  padding: 5rem 0;
@@ -185,6 +227,7 @@
 
 .footer__top .footer__logo {
  font-size: 1.25rem;
+ opacity: 0.75;
  font-weight: 700;
 }
 
@@ -248,32 +291,4 @@
  border-radius: 20px;
  padding: 0.75rem 1.25rem;
  cursor: pointer;
-}
-
-
-input[disabled] {
-  opacity: 0.25;
-  cursor: none;
-}
-
-.contact__form [type="submit"][disabled] {
-  opacity: 0.25;
-  transform: translateY(25%);
-  cursor: not-allowed;
-}
-
-.contact__form.true [type="submit"] {
-  height: 2rem;
-  width: 2rem;
-  background-color: white;
-  color: white;
-  border-radius: 999px;
-  border-top: 4px solid #00113b;
-  border-bottom: 4px solid #00113b;
-  animation: always infinite 1s ease;
-}
-
-@keyframes always {
-  0%{transform: rotate(0deg);}
-  100%{transform: rotate(360deg);}
 }

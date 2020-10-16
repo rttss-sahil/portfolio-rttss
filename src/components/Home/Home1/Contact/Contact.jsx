@@ -22,6 +22,7 @@ function Contact() {
       touched: false,
     }),
     [totalerror, setTotalerror] = useState(true),
+    [buttonValue, setButtonValue] = useState("Let's Talk"),
     [buttonLoading, setButtonLoading] = useState(false),
     onChangehandler = (e) => {
       switch (e.target.id) {
@@ -69,6 +70,10 @@ function Contact() {
           },
         });
         setButtonLoading(false);
+        setButtonValue("Sent !");
+        setTimeout(() => {
+          setButtonValue("Let's talk");
+        }, 2000);
       } else {
       }
     },
@@ -175,7 +180,7 @@ function Contact() {
             </select>
             {occupation.error && occupation.touched && <span>*</span>}
           </div>
-          <input type="submit" disabled={totalerror} value="Let's Talk" />
+          <input type="submit" disabled={totalerror} value={buttonValue} />
         </form>
       </div>
       <div className="contact__social social">
