@@ -13,46 +13,67 @@ import "./Contact.css";
 import { useState } from "react";
 
 function Contact() {
-  const [name, setName] = useState(""),
-    [email, setEmail] = useState(""),
-    [occupation, setOccupation] = useState(""),
+  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    [name, setName] = useState({ value: "", error: false, touched: false }),
+    [email, setEmail] = useState({ value: "", error: false, touched: false }),
+    [occupation, setOccupation] = useState({
+      value: "",
+      error: false,
+      touched: false,
+    }),
+    [totalerror, setTotalerror] = useState(true),
+    [buttonLoading, setButtonLoading] = useState(false),
     onChangehandler = (e) => {
       switch (e.target.id) {
         case "name":
-          setName(e.target.value);
+          setName({
+            ...name,
+            value: e.target.value,
+            error: name.value.length <= 4 || e.target.value <= 4,
+          });
           break;
+
         case "email":
-          setEmail(e.target.value);
+          setEmail({
+            ...email,
+            value: e.target.value,
+            error: !email.value.match(regex) || !e.target.value.match(regex),
+          });
           break;
+
         case "occupation":
-          setOccupation(e.target.value);
+          setOccupation({
+            ...occupation,
+            value: e.target.value,
+          });
           break;
         default:
           break;
       }
+
+      if (!name.error && !email.error && !occupation.error) {
+        setTotalerror(false);
+      }
     },
     submithandler = async (e) => {
       e.preventDefault();
-      console.log("SENDING...");
-      const formdata = new FormData();
-      formdata.append("name", name);
-      formdata.append("email", email);
-      formdata.append("occupation", occupation);
-
-      // console.log(name, email, occupation);
-      const res = await Axios({
-        url: "https://portfolio-rttss-backend.herokuapp.com/",
-        method: "POST",
-        data: { name, email, occupation },
+      if (!name.value <= 4 && !!email.value.match(regex) && !occupation.error) {
+        setButtonLoading(true);
+        await Axios({
+          url: "https://portfolio-rttss-backend.herokuapp.com/",
+          method: "POST",
+          data: { name, email, occupation },
+        });
+        setButtonLoading(false);
+      } else {
+      }
+    },
+    scrolltopHandler = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
       });
-      // console.log(JSON.stringify({ name }));
     };
-  const scrolltopHandler = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <div className="contact">
@@ -67,6 +88,7 @@ function Contact() {
             </span>
           </span>
         </div>
+
         <div className="answer">
           <span>Let's Work</span>
           <span>Together</span>
@@ -98,43 +120,58 @@ function Contact() {
           <p>New Delhi, India</p>
         </NavLink>
       </div>
-      <div className="contact__form">
-        <form
-          // action="http://localhost:5000/"
-          // method="post"
-          onSubmit={submithandler}
-        >
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            placeholder="Name"
-            onChange={onChangehandler}
-          />
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-            value={email}
-            onChange={onChangehandler}
-          />
-          <select
-            name="occupation"
-            id="occupation"
-            onChange={onChangehandler}
-            value={occupation}
-          >
-            <option value="placeholder" defaultValue disabled>
-              Why are you here?
-            </option>
-            <option value="friend">Just Checking the Website</option>
-            <option value="fan">Admiring Your Work</option>
-            <option value="hr">Looking for Working Together</option>
-            <option value="other">Other..</option>
-          </select>
-          <input type="submit" value="Let's Talk" />
+
+      <div className={`contact__form ${buttonLoading}`}>
+        <form onSubmit={submithandler}>
+          <div className="input input__name">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={name.value}
+              placeholder="Name"
+              onChange={onChangehandler}
+              onBlur={() => {
+                setName({ ...name, touched: true });
+              }}
+            />
+            {name.error && name.touched && <span>*</span>}
+          </div>
+          <div className="input input__email">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              value={email.value}
+              onChange={onChangehandler}
+              onBlur={() => {
+                setEmail({ ...email, touched: true });
+              }}
+            />
+            {email.touched && email.error && <span>*</span>}
+          </div>
+          <div className="input input__occupation">
+            <select
+              name="occupation"
+              id="occupation"
+              onChange={onChangehandler}
+              value={occupation.value}
+              onBlur={() => {
+                setOccupation({ ...occupation, touched: true });
+              }}
+            >
+              <option value="placeholder" defaultValue disabled>
+                Why are you here?
+              </option>
+              <option value="friend">Just Checking the Website</option>
+              <option value="fan">Admiring Your Work</option>
+              <option value="hr">Looking for Working Together</option>
+              <option value="other">Other..</option>
+            </select>
+            {occupation.error && occupation.touched && <span>*</span>}
+          </div>
+          <input type="submit" disabled={totalerror} value="Let's Talk" />
         </form>
       </div>
       <div className="contact__social social">
