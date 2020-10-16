@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { Swipeable } from "react-swipeable";
 import "./Projects.css";
 
@@ -9,8 +10,20 @@ const projects = [
     image: "cursor",
     header: "Full-fledged Web-Apps",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
+      "These include self-sustained mega apps, E-commerce websites, Social Media Apps, full stack problem-solving webapps.",
     classname: "project1",
+    collection: [
+      {
+        url: "http://mern-photos.netlify.app",
+        img: "mern-photos.png",
+        title: "Photos Social Media",
+      },
+      {
+        url: "#",
+        img: "development.jpg",
+        title: "Shopie E-Commerce {Development}",
+      },
+    ],
   },
   {
     id: "2",
@@ -18,8 +31,25 @@ const projects = [
     image: "color-picker",
     header: "PWA Collection",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
+      "This collection is going to represent small, but installable and user-centered progressive WebApps-the future of internet.",
     classname: "project2",
+    collection: [
+      {
+        url: "https://calculator-rttss.netlify.app/",
+        img: "calculator-rttss.png",
+        title: "Calculator Rttss",
+      },
+      {
+        url: "https://weather-rttss.netlify.app/",
+        img: "weather-rttss.png",
+        title: "Weather Rttss",
+      },
+      {
+        url: "https://clock-rttss.netlify.app/",
+        img: "clock-rttss.png",
+        title: "Clock Rttss",
+      },
+    ],
   },
   {
     id: "3",
@@ -27,8 +57,25 @@ const projects = [
     image: "hand",
     header: "UI Projects",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis porro cupiditate adipisci sunt rerum vitae explicabo quibusdam",
+      "As the name suggests, the collection prioritize looks over functionality to show the mindfulness, color-themed, cool-looking websites.",
     classname: "project3",
+    collection: [
+      {
+        url: "https://weather-rttss.netlify.app/",
+        img: "weather-rttss.png",
+        title: "Weather Rttss",
+      },
+      {
+        url: "https://clock-rttss.netlify.app/",
+        img: "clock-rttss.png",
+        title: "Clock Rttss",
+      },
+      {
+        url: "https://rttss.netlify.app",
+        img: "portfolio-rttss.png",
+        title: "Portfolio | Sahil Rathee",
+      },
+    ],
   },
 ];
 
@@ -46,7 +93,8 @@ function Projects({ getwidth, scrollY, pics }) {
       "projects__slider"
     ),
     [project_Class, setProject_Class] = useState("project"),
-    [answer_Class, setAnswer_Class] = useState("answer");
+    [answer_Class, setAnswer_Class] = useState("answer"),
+    [backDrop, setbackDrop] = useState("backdrop");
 
   useEffect(() => {
     window.addEventListener(
@@ -95,6 +143,15 @@ function Projects({ getwidth, scrollY, pics }) {
       : setCurrentSliderIndex([index]);
   };
 
+  const backdropHandler = () => {
+    setbackDrop("backdrop animate");
+    document.body.style.overflow = "hidden";
+  };
+  const backdropCancelHandler = () => {
+    setbackDrop("backdrop");
+    document.body.style.overflow = "initial";
+  };
+
   return (
     <div className="projects" id="projects">
       <div className="projects__center">
@@ -108,6 +165,30 @@ function Projects({ getwidth, scrollY, pics }) {
           <span>for all your needs.</span>
         </div>
       </div>
+      {currentSliderIndex.map((index) =>
+        projects.map(
+          (project, i) =>
+            index === i && (
+              <div key={i} className={backDrop} onClick={backdropCancelHandler}>
+                <div className="backdrop__main">
+                  {project.collection.map((item, i) => (
+                    <NavLink
+                      key={i}
+                      target="_blank"
+                      to={{
+                        pathname: item.url,
+                      }}
+                      className="backdrop__frame"
+                    >
+                      <img src={`${pics + item.img}`} alt="" />
+                      <div>{item.title}</div>
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            )
+        )
+      )}
       <Swipeable onSwipedLeft={previousSlide} onSwipedRight={nextSlide}>
         <div className={projectSlider_Class}>
           {currentSliderIndex.map((index) =>
@@ -131,11 +212,14 @@ function Projects({ getwidth, scrollY, pics }) {
                         alt={`${project.header}`}
                       />
                     </div>
+
                     <div className="project__header">{project.header}</div>
                     <div className="project__description">
                       {project.description}
                     </div>
-                    <div className="project__button">View Collection</div>
+                    <div className="project__button" onClick={backdropHandler}>
+                      View Collection
+                    </div>
                   </div>
                 )
             )
