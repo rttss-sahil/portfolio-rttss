@@ -17,7 +17,7 @@ function Contact() {
     [name, setName] = useState({ value: "", error: false, touched: false }),
     [email, setEmail] = useState({ value: "", error: false, touched: false }),
     [occupation, setOccupation] = useState({
-      value: "",
+      value: "placeholder",
       error: false,
       touched: false,
     }),
@@ -29,7 +29,7 @@ function Contact() {
           setName({
             ...name,
             value: e.target.value,
-            error: name.value.length <= 4 || e.target.value <= 4,
+            error: name.value.length <= 4 && e.target.value <= 4,
           });
           break;
 
@@ -37,7 +37,7 @@ function Contact() {
           setEmail({
             ...email,
             value: e.target.value,
-            error: !email.value.match(regex) || !e.target.value.match(regex),
+            error: !email.value.match(regex) && !e.target.value.match(regex),
           });
           break;
 
@@ -62,7 +62,11 @@ function Contact() {
         await Axios({
           url: "https://portfolio-rttss-backend.herokuapp.com/",
           method: "POST",
-          data: { name, email, occupation },
+          data: {
+            name: name.value,
+            email: email.value,
+            occupation: occupation.value,
+          },
         });
         setButtonLoading(false);
       } else {
@@ -161,7 +165,7 @@ function Contact() {
                 setOccupation({ ...occupation, touched: true });
               }}
             >
-              <option value="placeholder" defaultValue disabled>
+              <option value="placeholder" disabled>
                 Why are you here?
               </option>
               <option value="friend">Just Checking the Website</option>
