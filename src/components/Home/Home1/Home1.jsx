@@ -3,7 +3,7 @@ import Projects from "./Projects/Projects";
 
 // CSS
 import "./Home1.css";
-import Resume from "./Resume/Resume";
+import Contact from "./Contact/Contact";
 
 // LAzy Loading
 const Main = React.lazy(() => import("./Main/Main"));
@@ -46,7 +46,7 @@ function Home1({ randomNumber }) {
       <Main randomNumber={randomNumber} scrollY={scrollY} pics={pics} />
       <Skills scrollY={scrollY} pics={pics} />
       <Projects getwidth={getwidth} scrollY={scrollY} pics={pics} />
-      <Resume scrollY={scrollY} pics={pics} />
+      <Contact scrollY={scrollY} />
       <div
         id="cursor"
         style={{

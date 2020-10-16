@@ -24,3 +24,7 @@ body.no-scroll {
 body::-webkit-scrollbar {
  display: none;
 }
+
+body * {
+ transition: all 0.3s ease-in;
+}

@@ -86,10 +86,9 @@ function NavBar1() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/resume">Resume</NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/contact" onClick={() => clickhandler(2800)}>
+                Contact
+              </NavLink>
             </li>
           </ul>
         </div>

@@ -70,6 +70,8 @@
 .resume .figures__previews {
  position: relative;
  top: 50%;
+ height: 10rem;
+ width: 10rem;
  left: 42%;
  transform: translate(-50%, -10%);
 }
