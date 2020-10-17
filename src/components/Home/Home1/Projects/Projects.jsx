@@ -21,7 +21,12 @@ const projects = [
       {
         url: "#",
         img: "development.jpg",
-        title: "Shopie E-Commerce {Development}",
+        title: "Shopie E-Commerce {dev}",
+      },
+      {
+        url: "https://covid-rttss.netlify.app",
+        img: "covid-rttss.png",
+        title: "Covid19 WebApp {dev}",
       },
     ],
   },
