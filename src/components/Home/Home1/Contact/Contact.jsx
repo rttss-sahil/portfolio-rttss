@@ -186,7 +186,7 @@ function Contact() {
       <div className="contact__social social">
         <NavLink
           target="_blank"
-          to={{ pathname: "https://github.com/rttss" }}
+          to={{ pathname: "https://github.com/rttss-sahil" }}
           className="github"
         >
           <AiFillGithub />
@@ -194,7 +194,7 @@ function Contact() {
         </NavLink>
         <NavLink
           target="_blank"
-          to={{ pathname: "https://www.instagram.com/sahil_rttss/" }}
+          to={{ pathname: "https://www.instagram.com/rttss_sahil/" }}
           className="insta"
         >
           <AiOutlineInstagram />
