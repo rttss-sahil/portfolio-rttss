@@ -3,11 +3,6 @@ import { NavLink } from "react-router-dom";
 import Axios from "axios";
 import { FiMail, FiPhoneCall } from "react-icons/fi";
 import { BsFillHouseFill } from "react-icons/bs";
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiOutlineInstagram,
-} from "react-icons/ai";
 
 import "./Contact.css";
 import { useState } from "react";
