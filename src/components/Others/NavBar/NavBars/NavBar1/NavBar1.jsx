@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from 'react-router-dom';
-import {AiOutlineMedium} from 'react-icons/ai'
+
 import { FiMail, FiPhoneCall } from "react-icons/fi";
 import { BsFillHouseFill } from "react-icons/bs";
-import {ImBehance, ImDribbble, ImStackoverflow} from 'react-icons/im'
 
-
-import {
-  AiFillGithub,
-  AiFillLinkedin,
-  AiOutlineInstagram,
-} from "react-icons/ai";
 import "./NavBar1.css";
-import Navlinks from "../../../Navlinks/Navlinks";
+import Navlinks, { Social } from "../../../Navlinks/Navlinks";
 
 function NavBar1() {
   const [NAV_TOGGLE_Class, setNAV_TOGGLE_Class] = useState("nav-toggle"),
@@ -94,57 +87,7 @@ function NavBar1() {
             </li>
           </ul>
         </div>
-        <div className="social">
-          <Navlinks
-            newTab={true}
-            link="https://github.com/rttss-sahil"
-            className="github"
-            icon={AiFillGithub}
-            color='#242525'
-          />
-          <Navlinks
-            newTab={true}
-            link="https://www.instagram.com/rttss_sahil/"
-            className="insta"
-            icon={AiOutlineInstagram}
-            color='#ff0033'
-          />
-          <Navlinks
-            newTab={true}
-            link="https://www.linkedin.com/in/sahil-rathee-b3993116b/"
-            className="linkedIn"
-            icon={AiFillLinkedin}
-            color='#007bff'
-          />
-          <Navlinks
-            newTab={true}
-            link="https://stackoverflow.com/users/14934835/rttss-sahil"
-            className="stack-overflow"
-            icon={ImStackoverflow}
-            color='#ffa500'
-          />
-          <Navlinks
-            newTab={true}
-            link="https://medium.com/@rttss-sahil"
-            className="medium"
-            icon={AiOutlineMedium}
-            color='#000000'
-          />
-          <Navlinks
-            newTab={true}
-            link="https://www.behance.net/rttss_sahil/"
-            className="behance"
-            icon={ImBehance}
-            color='#0057FF'
-          />
-          <Navlinks
-            newTab={true}
-            link="https://dribbble.com/rttss_sahil"
-            className="dribble"
-            icon={ImDribbble}
-            color='#f03353'
-          />
-        </div>
+        <Social />
       </div>
     </React.Fragment>
   );

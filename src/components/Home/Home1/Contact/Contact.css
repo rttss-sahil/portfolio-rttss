@@ -195,20 +195,6 @@ input[disabled] {
 
 
 
-/* SOCIAL                                        */
-.contact .contact__social a {
- text-decoration: none;
-}
-.contact .contact__social svg{
- margin-right: 10px;
-}
-
-.contact__social {
- width: 100vw;
- margin-left: -3rem;
-}
-
-
 /* FOOTER                                             */
 
 .contact__footer {

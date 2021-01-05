@@ -362,13 +362,13 @@ ul a.active {
 }
 
 .social>* {
-  opacity: 0.75;
-  font-size: 4em;
+  opacity: 0.5;
+  font-size: 2em;
 }
 
 @media (min-width: 768px) {
   .social>* {
-    padding: 5px 0.25em;
+    padding: 5px 0.5em;
   }
 }
 

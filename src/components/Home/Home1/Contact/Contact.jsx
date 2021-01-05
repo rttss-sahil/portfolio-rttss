@@ -11,6 +11,7 @@ import {
 
 import "./Contact.css";
 import { useState } from "react";
+import { Social } from "../../../Others/Navlinks/Navlinks";
 
 function Contact() {
   const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -183,34 +184,8 @@ function Contact() {
           <input type="submit" disabled={totalerror} value={buttonValue} />
         </form>
       </div>
-      <div className="contact__social social">
-        <NavLink
-          target="_blank"
-          to={{ pathname: "https://github.com/rttss-sahil" }}
-          className="github"
-        >
-          <AiFillGithub />
-          <p>Github</p>
-        </NavLink>
-        <NavLink
-          target="_blank"
-          to={{ pathname: "https://www.instagram.com/rttss_sahil/" }}
-          className="insta"
-        >
-          <AiOutlineInstagram />
-          <p>Instagram</p>
-        </NavLink>
-        <NavLink
-          target="_blank"
-          to={{
-            pathname: "https://www.linkedin.com/in/sahil-rathee-b3993116b/",
-          }}
-          className="linkedIn"
-        >
-          <AiFillLinkedin />
-          <p>LinkedIn</p>
-        </NavLink>
-      </div>
+      {/* Social */}
+      <Social />
       <div className="contact__footer">
         <div className="footer__top">
           <div className="footer__logo">Sahil Rathee</div>
