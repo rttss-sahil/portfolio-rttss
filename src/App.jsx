@@ -9,7 +9,7 @@ const Home = React.lazy(() => import("./components/Home/Home"));
 
 // APP
 function App() {
-  const randomNumber = 0;
+  const randomNumber = 1;
   // Math.floor(Math.random() * 3);
   return (
     <React.Fragment>
