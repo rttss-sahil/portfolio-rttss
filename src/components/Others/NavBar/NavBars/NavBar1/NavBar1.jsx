@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import {AiOutlineMedium} from 'react-icons/ai'
 import { FiMail, FiPhoneCall } from "react-icons/fi";
 import { BsFillHouseFill } from "react-icons/bs";
+import {ImBehance, ImDribbble, ImStackoverflow} from 'react-icons/im'
+
+
 import {
   AiFillGithub,
   AiFillLinkedin,
   AiOutlineInstagram,
 } from "react-icons/ai";
 import "./NavBar1.css";
+import Navlinks from "../../../Navlinks/Navlinks";
 
 function NavBar1() {
   const [NAV_TOGGLE_Class, setNAV_TOGGLE_Class] = useState("nav-toggle"),
@@ -49,30 +54,27 @@ function NavBar1() {
       <div className={MENU_Class}>
         <div className="top">
           <div className="topbar">
-            <NavLink
-              target="_blank"
-              to={{ pathname: "mailto:sahil.git@outlook.com" }}
-              className="mail"
-            >
-              <FiMail />
-              <p>sahil.git@outlook.com</p>
-            </NavLink>
-            <NavLink
-              target="_blank"
-              to={{ pathname: "tel:+919992396866" }}
+            <Navlinks
+              newTab={true}
+              link='mailto:sahil.git@outlook.com'
+              className='mail'
+              icon={FiMail}
+              p='sahil.git@outlook.com'
+            />
+            <Navlinks
+              newTab={true}
+              link="tel:+919992396866"
               className="phone"
-            >
-              <FiPhoneCall />
-              <p>+91-999-239-6866</p>
-            </NavLink>
-            <NavLink
-              target="_blank"
-              to={{ pathname: "https://goo.gl/maps/Q3DzphNrFjUfDjvH9" }}
+              icon={FiPhoneCall}
+              p='+91-999-239-6866'
+            />
+            <Navlinks
+              newTab={true}
+              link="https://goo.gl/maps/Q3DzphNrFjUfDjvH9"
               className="address"
-            >
-              <BsFillHouseFill />
-              <p>New Delhi, India</p>
-            </NavLink>
+              icon={BsFillHouseFill}
+              p='New Delhi, India'
+            />
           </div>
           <ul>
             <li>
@@ -93,32 +95,55 @@ function NavBar1() {
           </ul>
         </div>
         <div className="social">
-          <NavLink
-            target="_blank"
-            to={{ pathname: "https://github.com/rttss-sahil" }}
+          <Navlinks
+            newTab={true}
+            link="https://github.com/rttss-sahil"
             className="github"
-          >
-            <AiFillGithub />
-            <p>Github</p>
-          </NavLink>
-          <NavLink
-            target="_blank"
-            to={{ pathname: "https://www.instagram.com/rttss_sahil/" }}
+            icon={AiFillGithub}
+            color='#242525'
+          />
+          <Navlinks
+            newTab={true}
+            link="https://www.instagram.com/rttss_sahil/"
             className="insta"
-          >
-            <AiOutlineInstagram />
-            <p>Instagram</p>
-          </NavLink>
-          <NavLink
-            target="_blank"
-            to={{
-              pathname: "https://www.linkedin.com/in/sahil-rathee-b3993116b/",
-            }}
+            icon={AiOutlineInstagram}
+            color='#ff0033'
+          />
+          <Navlinks
+            newTab={true}
+            link="https://www.linkedin.com/in/sahil-rathee-b3993116b/"
             className="linkedIn"
-          >
-            <AiFillLinkedin />
-            <p>LinkedIn</p>
-          </NavLink>
+            icon={AiFillLinkedin}
+            color='#007bff'
+          />
+          <Navlinks
+            newTab={true}
+            link="https://stackoverflow.com/users/14934835/rttss-sahil"
+            className="stack-overflow"
+            icon={ImStackoverflow}
+            color='#ffa500'
+          />
+          <Navlinks
+            newTab={true}
+            link="https://medium.com/@rttss-sahil"
+            className="medium"
+            icon={AiOutlineMedium}
+            color='#000000'
+          />
+          <Navlinks
+            newTab={true}
+            link="https://www.behance.net/rttss_sahil/"
+            className="behance"
+            icon={ImBehance}
+            color='#0057FF'
+          />
+          <Navlinks
+            newTab={true}
+            link="https://dribbble.com/rttss_sahil"
+            className="dribble"
+            icon={ImDribbble}
+            color='#f03353'
+          />
         </div>
       </div>
     </React.Fragment>

@@ -354,58 +354,24 @@ ul a.active {
 /*     SOCIAL MEDIA     */
 
 
-.social,
-.social * {
+.social {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  opacity: 0.8;
-  font-weight: 700;
+  justify-content: center;
   transition: all 0.3s ease-in-out;
 }
 
 .social>* {
-  padding: 5px 10px;
-  border-radius: 999px;
-  box-shadow:
-    -1px -1px 10px rgba(0, 0, 0, 0.02),
-    -2px -2px 10px rgba(0, 0, 0, 0.02),
-    -3px -3px 10px rgba(0, 0, 0, 0.02),
-    -4px -4px 10px rgba(0, 0, 0, 0.02),
-
-    1px 1px 10px rgba(0, 0, 0, 0.12),
-    2px 2px 10px rgba(0, 0, 0, 0.12),
-    3px 3px 10px rgba(0, 0, 0, 0.12),
-    4px 4px 10px rgba(0, 0, 0, 0.12),
-
-    inset 1px 1px 5px rgba(0, 0, 0, 0.02),
-    inset 2px 2px 5px rgba(0, 0, 0, 0.02),
-    inset 3px 3px 5px rgba(0, 0, 0, 0.02),
-
-    inset -1px -1px 5px rgba(0, 0, 0, 0.12),
-    inset -2px -2px 5px rgba(0, 0, 0, 0.12),
-    inset -3px -3px 5px rgba(0, 0, 0, 0.12);
-
+  opacity: 0.75;
+  font-size: 4em;
 }
 
 @media (min-width: 768px) {
   .social>* {
-    padding: 5px 2rem;
+    padding: 5px 0.25em;
   }
 }
 
 .social *:hover {
-  opacity: 1.5;
-}
-
-.social .github {
-  color: #6c757d;
-}
-
-.social .insta {
-  color: crimson;
-}
-
-.social .linkedIn {
-  color: #007bff;
+  opacity: 1;
 }
