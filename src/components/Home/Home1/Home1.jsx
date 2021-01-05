@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Projects from "./Projects/Projects";
 
 // CSS
 import "./Home1.css";
-import Contact from "./Contact/Contact";
 
 // LAzy Loading
+const Contact = React.lazy(()=>import("./Contact/Contact"))
+const Projects = React.lazy(()=> import("./Projects/Projects"))
 const Main = React.lazy(() => import("./Main/Main"));
 const Skills = React.lazy(() => import("./Skills/Skills"));
 

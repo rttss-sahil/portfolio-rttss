@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Swipeable } from "react-swipeable";
+
 import "./Projects.css";
 
 const projects = [
@@ -10,7 +11,7 @@ const projects = [
     image: "cursor",
     header: "Full-fledged Web-Apps",
     description:
-      "These include self-sustained mega apps, E-commerce websites, Social Media Apps, full stack problem-solving webapps.",
+      "Visually appealing website with personal touches at each step inspired by UI8Net wireframes. Definitely a must visit.",
     classname: "project1",
     collection: [
       {
@@ -26,7 +27,7 @@ const projects = [
       {
         url: "https://covid-rttss.netlify.app",
         img: "covid-rttss.png",
-        title: "Covid19 WebApp {dev}",
+        title: "Covid19 WebApp",
       },
     ],
   },
@@ -36,7 +37,7 @@ const projects = [
     image: "color-picker",
     header: "PWA Collection",
     description:
-      "This collection is going to represent small, but installable and user-centered progressive WebApps-the future of internet.",
+      "Collection of style-oriented, design-friendly websites with no real world application.",
     classname: "project2",
     collection: [
       {
@@ -84,7 +85,7 @@ const projects = [
   },
 ];
 
-function Projects({ getwidth, scrollY, pics }) {
+function Projects({ pics }) {
   const sliderItems = projects.length,
     lastIndex = sliderItems - 1,
     [currentSliderIndex, setCurrentSliderIndex] = useState(

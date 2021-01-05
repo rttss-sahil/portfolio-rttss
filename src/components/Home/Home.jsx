@@ -1,5 +1,5 @@
 import React from "react";
-import Home1 from "./Home1/Home1";
+const Home1 = React.lazy(() => import('./Home1/Home1'));
 
 function Home({ randomNumber }) {
   return (

@@ -12,7 +12,6 @@ function NavBar1() {
     [MENU_Class, setMENU_Class] = useState("menu"),
     [head_Class, setHead_Class] = useState("head"),
     handleNAV_TOGGLE_Click = () => {
-      document.body.classList.toggle("no-scroll");
       NAV_TOGGLE_Class === "nav-toggle"
         ? setNAV_TOGGLE_Class("nav-toggle open")
         : setNAV_TOGGLE_Class("nav-toggle");
@@ -48,21 +47,18 @@ function NavBar1() {
         <div className="top">
           <div className="topbar">
             <Navlinks
-              newTab={true}
               link='mailto:sahil.git@outlook.com'
               className='mail'
               icon={FiMail}
               p='sahil.git@outlook.com'
             />
             <Navlinks
-              newTab={true}
               link="tel:+919992396866"
               className="phone"
               icon={FiPhoneCall}
               p='+91-999-239-6866'
             />
             <Navlinks
-              newTab={true}
               link="https://goo.gl/maps/Q3DzphNrFjUfDjvH9"
               className="address"
               icon={BsFillHouseFill}
@@ -87,6 +83,7 @@ function NavBar1() {
             </li>
           </ul>
         </div>
+        {/* Social */}
         <Social />
       </div>
     </React.Fragment>

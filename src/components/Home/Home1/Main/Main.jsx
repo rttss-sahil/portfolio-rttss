@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../../../Others/NavBar/NavBar";
+
 import { CgScrollV } from "react-icons/cg";
 
-// CSS
 import "./Main.css";
-import { useEffect } from "react";
 
 function Main({ randomNumber, scrollY, pics }) {
   const [span1_Class, setSpan1_Class] = useState("span1 opened"),
@@ -17,7 +16,13 @@ function Main({ randomNumber, scrollY, pics }) {
     [main_Figure_Class, setMain_Figure_Class] = useState(
       "main__figure aos-init"
     ),
-    [button_Scroll_Class, setButton_Scroll_Class] = useState("btn__scroll");
+    [button_Scroll_Class, setButton_Scroll_Class] = useState("btn__scroll"),
+    style = (val1, val2) => {
+      return {
+        transform: `translate3d(0px, ${(-scrollY + (val1 || 350)) / (val2 || 5)}px, 0px)`,
+        transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
+      }
+    }
 
   useEffect(() => {
     window.addEventListener(
@@ -85,10 +90,7 @@ function Main({ randomNumber, scrollY, pics }) {
             <img
               className="main__pic js-parallax"
               src={`${pics}main-pic-1.png`}
-              style={{
-                transform: `translate3d(0px, ${(-scrollY + 50) / 5}px, 0px)`,
-                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
-              }}
+              style={style(50)}
               alt=""
             />
           </div>
@@ -96,10 +98,7 @@ function Main({ randomNumber, scrollY, pics }) {
             <img
               className="main__pic js-parallax"
               src={`${pics}main-pic-2.png`}
-              style={{
-                transform: `translate3d(0px, ${(-scrollY + 150) / 8}px, 0px)`,
-                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
-              }}
+              style={style(150, 8)}
               alt=""
             />
           </div>
@@ -127,10 +126,7 @@ function Main({ randomNumber, scrollY, pics }) {
             <img
               className="main__pic js-parallax"
               src={`${pics}main-pic-5.png`}
-              style={{
-                transform: `translate3d(0px, ${(-scrollY + 150) / 8}px, 0px)`,
-                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
-              }}
+              style={style(150, 8)}
               alt=""
             />
           </div>
@@ -138,10 +134,7 @@ function Main({ randomNumber, scrollY, pics }) {
             <img
               className="main__pic js-parallax"
               src={`${pics}main-pic-7.png`}
-              style={{
-                transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
-                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
-              }}
+              style={style()}
               alt=""
             />
           </div>
@@ -150,20 +143,14 @@ function Main({ randomNumber, scrollY, pics }) {
           <div className="main__figure aos-init aos-animate">
             <img
               src={`${pics}figure-1.png`}
-              style={{
-                transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
-                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
-              }}
+              style={style()}
               alt=""
             />
           </div>
           <div className={main_Figure_Class}>
             <img
               src={`${pics}figure-2.png`}
-              style={{
-                transform: `translate3d(0px, ${(-scrollY + 350) / 5}px, 0px)`,
-                transition: "transform 0.75s cubic-bezier(0, 0, 0, 1) 0s",
-              }}
+              style={style()}
               alt=""
             />
           </div>
@@ -183,4 +170,6 @@ function Main({ randomNumber, scrollY, pics }) {
     </React.Fragment>
   );
 }
+
+
 export default Main;

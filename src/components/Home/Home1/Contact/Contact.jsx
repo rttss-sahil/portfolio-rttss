@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+
 import Axios from "axios";
+
 import { FiMail, FiPhoneCall } from "react-icons/fi";
 import { BsFillHouseFill } from "react-icons/bs";
 
 import "./Contact.css";
-import { useState } from "react";
-import { Social } from "../../../Others/Navlinks/Navlinks";
+
+import { Social } from '../../../Others/Navlinks/Navlinks'
 
 function Contact() {
   const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
