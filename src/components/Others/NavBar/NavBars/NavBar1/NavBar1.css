@@ -12,7 +12,6 @@
   z-index: 999;
 }
 
-
 @media (min-width: 768px) {
   .navbar {
     height: 7rem;
@@ -48,7 +47,6 @@
   background-color: white;
 }
 
-
 .head .logo {
   font-size: 1.25rem;
   transition: all 0.5s ease;
@@ -72,22 +70,23 @@
   display: inline-block;
   position: relative;
   padding-bottom: 0px;
-  transition: color .35s ease;
+  transition: color 0.35s ease;
 }
 
 .menu ul a:before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   left: 0;
   bottom: 0px;
   height: 3px;
   width: 0;
-  transition: width 0s ease, background .35s ease;
+  transition: width 0s ease, background 0.35s ease;
+  visibility: hidden;
 }
 
 .menu ul a:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   right: 0;
@@ -95,19 +94,22 @@
   height: 3px;
   width: 0;
   background: #000;
-  transition: width .35s ease;
+  transition: width 0.35s ease;
+  visibility: hidden;
 }
 
 .menu ul a:hover:before {
   width: 100%;
   background: #000;
-  transition: width .35s ease;
+  transition: width 0.35s ease;
+  visibility: visible;
 }
 
 .menu ul a:hover:after {
   width: 100%;
   background: transparent;
   transition: all 0s ease;
+  visibility: visible;
 }
 
 ul a.active:after {
@@ -121,7 +123,7 @@ ul a.active:after {
 }
 
 .navbar ul li {
-  margin-top: .1rem;
+  margin-top: 0.1rem;
   font-size: 1.25rem;
   font-weight: 800;
   opacity: 0;
@@ -130,7 +132,6 @@ ul a.active:after {
   transition: all 0.75s ease-in-out;
   transition: opacity 0.15s ease-in-out;
 }
-
 
 @media (min-width: 768px) {
   .navbar ul li {
@@ -148,11 +149,9 @@ ul a.active:after {
   }
 }
 
-
 .menu.collapse ul li:nth-child(2) {
   transition-delay: 0.5s;
 }
-
 
 .menu.collapse ul li:nth-child(3) {
   transition-delay: 0.79s;
@@ -165,7 +164,6 @@ ul a.active:after {
 .menu.collapse ul li:nth-child(5) {
   transition-delay: 1.15s;
 }
-
 
 .menu.collapse ul li {
   opacity: 1;
@@ -180,7 +178,6 @@ nav ul li a {
 ul a.active {
   color: black;
 }
-
 
 .menu {
   display: flex;
@@ -206,16 +203,14 @@ ul a.active {
   align-items: center;
 }
 
-
 @media (min-width: 768px) {
   .top {
     flex-direction: row;
   }
 }
 
-
 .menu ul:before {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
@@ -232,9 +227,6 @@ ul a.active {
   overflow-y: hidden;
 }
 
-
-
-
 .menu.collapse .navbar {
   background-color: white;
 }
@@ -243,7 +235,6 @@ ul a.active {
   opacity: 1;
   transform: translate(0);
 }
-
 
 /*    NAV_TOGGLE     */
 
@@ -268,8 +259,6 @@ ul a.active {
   transform: rotate(45deg) translate(4.4px, 0.5px);
 }
 
-
-
 .nav-toggle.open span:last-child {
   transform: rotate(-45deg) translate(4.4px, -0.5px);
 }
@@ -282,7 +271,7 @@ ul a.active {
   margin-top: 4px;
   border-radius: 999px;
   background-color: #000;
-  transition: all .25s;
+  transition: all 0.25s;
 }
 
 @media (min-width: 768px) {
@@ -291,7 +280,6 @@ ul a.active {
     width: 125%;
     background-color: white;
   }
-
 
   .nav-toggle.open span {
     background-color: black;
@@ -328,7 +316,6 @@ ul a.active {
     margin-left: 0;
     margin-bottom: 0;
   }
-
 }
 
 .topbar svg {
@@ -350,9 +337,7 @@ ul a.active {
   opacity: 1;
 }
 
-
 /*     SOCIAL MEDIA     */
-
 
 .social {
   display: flex;
@@ -361,13 +346,13 @@ ul a.active {
   transition: all 0.3s ease-in-out;
 }
 
-.social>* {
+.social > * {
   opacity: 0.5;
   font-size: 2em;
 }
 
 @media (min-width: 768px) {
-  .social>* {
+  .social > * {
     padding: 5px 0.5em;
   }
 }

@@ -2,6 +2,7 @@ const CACHE_NAME = "v1.1.3",
   urlsToCache = [
     "/",
     "/index.html",
+    "/error.html",
 
     "/static/css/10.8d2096f1.chunk.css",
     "/static/css/10.8d2096f1.chunk.css.map",
@@ -91,7 +92,7 @@ self.addEventListener("fetch", (e) => {
     caches.match(e.request).then(() => {
       return fetch(e.request).catch(() => {
         // console.log("matching with index, err: ", err);
-        return caches.match("index.html");
+        return caches.match("error.html");
       });
     })
   );
