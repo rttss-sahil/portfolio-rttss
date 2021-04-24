@@ -3,10 +3,10 @@
   "name": "RTTSS Portfolio APP PWA",
   "icons": [
     {
-      "src": "./logo.png",
-      "type": "image/png",
-      "sizes": "1024x1024",
-      "purpose": "maskable"
+      "src": "./logo.svg",
+      "type": "image/svg",
+      "sizes": "165x165",
+      "purpose": "any"
     }
   ],
   "start_url": ".",

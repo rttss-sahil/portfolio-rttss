@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import Axios from "axios";
@@ -22,6 +22,7 @@ function Contact() {
     [totalerror, setTotalerror] = useState(true),
     [buttonValue, setButtonValue] = useState("Let's Talk"),
     [buttonLoading, setButtonLoading] = useState(false),
+    [os, setOS] = useState('Any'),
     onChangehandler = (e) => {
       switch (e.target.id) {
         case "name":
@@ -58,6 +59,8 @@ function Contact() {
       e.preventDefault();
       if (!name.value <= 4 && !!email.value.match(regex) && !occupation.error) {
         setButtonLoading(true);
+        const now = new Date();
+        setOS(getOS());
         await Axios({
           url: "https://portfolio-rttss-backend.herokuapp.com/",
           method: "POST",
@@ -65,6 +68,8 @@ function Contact() {
             name: name.value,
             email: email.value,
             occupation: occupation.value,
+            now,
+            os
           },
         });
         setButtonLoading(false);
@@ -81,6 +86,28 @@ function Contact() {
         behavior: "smooth",
       });
     };
+  function getOS() {
+    var userAgent = window.navigator.userAgent,
+      platform = window.navigator.platform,
+      macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+      windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+      iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+      os = null;
+
+    if (macosPlatforms.indexOf(platform) !== -1) {
+      os = 'Mac OS';
+    } else if (iosPlatforms.indexOf(platform) !== -1) {
+      os = 'iOS';
+    } else if (windowsPlatforms.indexOf(platform) !== -1) {
+      os = 'Windows';
+    } else if (/Android/.test(userAgent)) {
+      os = 'Android';
+    } else if (!os && /Linux/.test(platform)) {
+      os = 'Linux';
+    }
+
+    return os;
+  }
 
   return (
     <div className="contact">
