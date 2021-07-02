@@ -69,7 +69,7 @@ function Main({ randomNumber, scrollY, pics }) {
             <p>Who Am I</p>
           </div>
           <div className="answer">
-            <span className={span1_Class}>Hello, my</span>
+            <span className={span1_Class}>Hey, my</span>
             <span className={span2_Class}>name's Sahil</span>
             <span className={span3_Class}>I'm UI designer</span>
             <span className={span4_Class}>cum developer</span>
